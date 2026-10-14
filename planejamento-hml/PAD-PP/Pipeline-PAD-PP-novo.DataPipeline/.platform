@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Pipeline-PAD-PP-novo"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6193adb7-37ed-8a90-499b-9ddb55298254"
+  }
+}
