@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Pipeline-PAD-PP-antigo"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "501a7056-8d68-bc63-4f6e-a4a0a7cf700c"
+  }
+}
