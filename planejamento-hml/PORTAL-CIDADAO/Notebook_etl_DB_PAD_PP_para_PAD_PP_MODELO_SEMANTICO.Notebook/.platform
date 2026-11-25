@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Notebook_etl_DB_PAD_PP_para_PAD_PP_MODELO_SEMANTICO"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "71b6cb96-5961-960d-45bb-7e6f049aa83f"
+  }
+}
