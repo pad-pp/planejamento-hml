@@ -1,0 +1,418 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "programa.nome_programa": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Programa",
+			          "ConceptualProperty": "Nome Programa"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Programa": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "produto.nome_produto": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Produto",
+			          "ConceptualProperty": "Nome Produto"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Produto": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "produto_beneficiários.beneficiário": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Produto Beneficiários",
+			          "ConceptualProperty": "Beneficiário"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Público Alvo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Público-Alvo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "indicador.código_indicador": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Indicador",
+			          "ConceptualProperty": "Código Indicador"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Código": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "indicador.categoria_indicador": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Indicador",
+			          "ConceptualProperty": "Categoria Indicador"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Categoria": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "objetivos_estratégicos.nome": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Objetivos Estratégicos",
+			          "ConceptualProperty": "Nome"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Objetivo Estratégico": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "produto_ods.código_completo_meta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Produto ODS",
+			          "ConceptualProperty": "Código Completo Meta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Código": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "produto_ods.nome_meta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Produto ODS",
+			          "ConceptualProperty": "Nome Meta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Meta de ODS": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "produto_ods.código_ods": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Produto ODS",
+			          "ConceptualProperty": "Código ODS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Objetivos de Desenvolvimento Sustentável - ODS": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_medidas.posição_indicador": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Medidas",
+			          "ConceptualProperty": "Posição Indicador"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "indicador_apuração.valor_apurado_acumulado_no_ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Indicador Apuração",
+			          "ConceptualProperty": "Valor Apurado Acumulado no Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Resultado (B)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "indicador_apuração.percentual_de_cumprimento_da_meta_do_ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Indicador Apuração",
+			          "ConceptualProperty": "Percentual de Cumprimento da Meta do Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Taxa de Atingimento (B)/(A)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Cumprimento da Meta do Ano": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "políticas_públicas.política_pública": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Políticas Públicas",
+			          "ConceptualProperty": "Política Pública"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Políticas Públicas": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "ação.código_e_nome_ação": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Ação",
+			          "ConceptualProperty": "Código e Nome Ação"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Nome da Ação": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "unidade_orçamentária.uo_descritiva": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Unidade Orçamentária",
+			          "ConceptualProperty": "UO Descritiva"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Dotação e Execução Orçamentária": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "despesa_categoria.categoria_descritiva": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Despesa Categoria",
+			          "ConceptualProperty": "Categoria Descritiva"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Categoria": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "despesa_grupo.grupo_descritivo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Despesa Grupo",
+			          "ConceptualProperty": "Grupo Descritivo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Grupo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "despesa_elemento.elemento_descritivo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Despesa Elemento",
+			          "ConceptualProperty": "Elemento Descritivo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Elemento": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "indicador_histórico_metas.sigla_fase": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Indicador Histórico Metas",
+			          "ConceptualProperty": "Sigla Fase"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Norma": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

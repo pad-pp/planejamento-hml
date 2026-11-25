@@ -1,0 +1,103 @@
+table Produto
+	lineageTag: cd73bc7f-20cc-4713-8af4-05ca9275db8b
+
+	column 'Código Produto'
+		dataType: int64
+		formatString: 0
+		lineageTag: de41b74f-3510-4cc0-9b17-8989a0bccbd6
+		summarizeBy: none
+		sourceColumn: Código Produto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Produto'
+		dataType: string
+		lineageTag: 3211a671-4b10-4ac8-8c0e-ec1838c1747e
+		summarizeBy: none
+		sourceColumn: Nome Produto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Programa'
+		dataType: int64
+		formatString: 0
+		lineageTag: cca62eda-6f2c-45f1-b4b0-18f6d6809e24
+		summarizeBy: none
+		sourceColumn: Código Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Descrição Produto'
+		dataType: string
+		lineageTag: 8719f96f-1ff9-4b75-bc99-cfc3887b2a6c
+		summarizeBy: none
+		sourceColumn: Descrição Produto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Produto Prioritário'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2af48768-03df-4b29-8804-ec0ae5e3e58c
+		summarizeBy: none
+		sourceColumn: Produto Prioritário
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Classificação Produto'
+		dataType: string
+		lineageTag: 06b0f081-1d3a-4047-b85c-960b57907871
+		summarizeBy: none
+		sourceColumn: Classificação Produto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código e Nome Produto'
+		dataType: string
+		lineageTag: 1e7639c3-8ffc-4244-90ab-8e65259a1adf
+		summarizeBy: none
+		sourceColumn: Código e Nome Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Programa e Produto para Busca Textual'
+		dataType: string
+		lineageTag: 42b3ce92-6844-42ca-b4b7-f6d40ce7f819
+		summarizeBy: none
+		sourceColumn: Programa e Produto para Busca Textual
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meta Prioritária'
+		dataType: string
+		lineageTag: eafcdeba-7048-44de-b505-92299764dfa4
+		summarizeBy: none
+		sourceColumn: Meta Prioritária
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Produto-c85a7be9-d700-469a-8db9-3936b0fa4da4 = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("6wulhtcapyqe5g3tfjv5bptbuq-opuyt6vmlbne7dponfisybylqa.datawarehouse.fabric.microsoft.com", "PAD_PP_MODELO_SEMANTICO"),
+				    dbo_produto = Fonte{[Schema="dbo",Item="v_produto"]}[Data]
+				in
+				    dbo_produto
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

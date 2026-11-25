@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "e8392d6a66b32db84d0a",
+  "position": {
+    "x": 101.20930232558139,
+    "y": 367.13178294573646,
+    "z": 18000,
+    "height": 99.2248062015504,
+    "width": 359.19379844961242,
+    "tabOrder": 17000
+  },
+  "visualGroup": {
+    "displayName": "Linha de Base",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "ae5d52582190eec69a1b",
+  "position": {
+    "x": 60.645161290322577,
+    "y": 152.25806451612902,
+    "z": 12875,
+    "height": 250.32258064516128,
+    "width": 934.19354838709671,
+    "tabOrder": 20000
+  },
+  "visualGroup": {
+    "displayName": "Apuração por Ano",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

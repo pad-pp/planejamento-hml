@@ -1,0 +1,94 @@
+table 'Produto ODS'
+	lineageTag: aec01ca9-2ee6-4c39-84d4-c0813b5f7c7d
+
+	column 'Código Produto'
+		dataType: int64
+		formatString: 0
+		lineageTag: a0d18489-0a10-438a-ae23-98b6daffe176
+		summarizeBy: none
+		sourceColumn: Código Produto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código ODS'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8aae22b8-6553-480f-9a14-906bcf8352d2
+		summarizeBy: none
+		sourceColumn: Código ODS
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column 'Nome ODS'
+		dataType: string
+		lineageTag: d2cda713-3525-4ee0-8797-e4ef12117c1e
+		summarizeBy: none
+		sourceColumn: Nome ODS
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Meta'
+		dataType: string
+		lineageTag: 232d7a19-06e3-4b12-91ca-d2e89e74bbc3
+		summarizeBy: none
+		sourceColumn: Código Meta
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Meta'
+		dataType: string
+		lineageTag: 23b938cd-215a-439d-8cc1-3541534593cd
+		summarizeBy: none
+		sourceColumn: Nome Meta
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Completo Meta' = CONCATENATE('Produto ODS'[Código ODS], CONCATENATE(".", 'Produto ODS'[Código Meta]))
+		lineageTag: 1627af0d-e2c4-4b12-ae40-66af53dcab19
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Produto ODS-1382f296-534d-4a7a-8470-46cea92fe0c1' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/ods.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Ano", Int64.Type}, {"Código Produto", Int64.Type}, {"ODS", type text}, {"Meta", type text}}),
+				    #"Linhas Agrupadas" = Table.Group(#"Changed Type", {"Código Produto"}, {{"Max Ano", each List.Max([Ano]), type nullable number}, {"Resto", each _, type table [Ano=nullable number, Código Produto=nullable number, ODS=nullable text, Meta=nullable text]}}),
+				    #"Resto Expandido" = Table.ExpandTableColumn(#"Linhas Agrupadas", "Resto", {"Ano", "ODS", "Meta"}, {"Ano", "ODS", "Meta"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Resto Expandido", each [Ano] = [Max Ano]),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Linhas Filtradas",{"Max Ano", "Ano"}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Colunas Removidas", "ODS", Splitter.SplitTextByEachDelimiter({"- "}, QuoteStyle.Csv, true), {"Código ODS", "Nome ODS"}),
+				    #"Extracted Text After Delimiter" = Table.TransformColumns(#"Split Column by Delimiter", {{"Código ODS", each Text.AfterDelimiter(_, "- "), Int64.Type}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Extracted Text After Delimiter",{{"Código ODS", Int64.Type}}),
+				    #"Split Column by Delimiter1" = Table.SplitColumn(#"Changed Type2", "Meta", Splitter.SplitTextByEachDelimiter({"- "}, QuoteStyle.Csv, true), {"Código Meta", "Nome Meta"}),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(#"Split Column by Delimiter1", "Código Meta", Splitter.SplitTextByEachDelimiter({"."}, QuoteStyle.Csv, true), {"Código Meta.1", "Código Meta"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"Nome ODS", type text}, {"Nome Meta", type text}, {"Código Meta", type text}}),
+				    #"Colunas Removidas1" = Table.RemoveColumns(#"Tipo Alterado",{"Código Meta.1"})
+				in
+				    #"Colunas Removidas1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

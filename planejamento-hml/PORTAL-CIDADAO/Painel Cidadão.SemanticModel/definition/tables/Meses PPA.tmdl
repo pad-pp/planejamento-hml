@@ -1,0 +1,41 @@
+table 'Meses PPA'
+	lineageTag: 98646cbc-bb87-43c2-abef-de446d1797f8
+	dataCategory: Time
+
+	column Mês
+		isKey
+		formatString: mmmm" de "yyyy
+		lineageTag: 225168f7-4331-45af-a519-9dd75e4a4bb1
+		summarizeBy: none
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Ano = YEAR([Mês])
+		formatString: 0
+		lineageTag: 1ced84e9-a56e-407d-a291-a2c54af07482
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Mês Hierarchy'
+		lineageTag: c8a045c9-e955-4e1c-bfc9-683dc829a482
+
+		level Ano
+			lineageTag: 40025ad8-c5a3-47b6-8482-6250b8958471
+			column: Ano
+
+		level Mês
+			lineageTag: f162808f-9fec-47e9-a758-222955aed88c
+			column: Mês
+
+	partition 'Meses PPA' = calculated
+		mode: import
+		source = CALENDAR(FIRSTDATE('Indicador Apuração'[Mês Apuração]), LASTDATE('Indicador Apuração'[Mês Apuração]))
+
+	annotation PBI_Id = 457f3c9541824c1eb28e420d3c67899c
+

@@ -1,0 +1,94 @@
+/// Dados oriundos de http://produtos.seade.gov.br/produtos/divpolitica/index.php?page=tabela&action=load&nivel=70
+table 'Regiões Administrativas SEADE'
+	excludeFromModelRefresh
+	lineageTag: 0033ac54-0072-4380-8baf-7c81f89b605c
+
+	column '   Código'
+		dataType: int64
+		formatString: 0
+		lineageTag: 863a199e-8ffb-4ca2-b7cd-c0075fcc5a99
+		summarizeBy: none
+		sourceColumn: "   Código"
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Município
+		dataType: string
+		lineageTag: a1a01c70-0c1a-4f7d-be3d-49e46b2a8842
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: Município
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Região Administrativa'
+		dataType: string
+		lineageTag: 778ed8cc-9237-4d52-b2cb-9e3fb008ee0d
+		summarizeBy: none
+		sourceColumn: Região Administrativa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Região de Governo'
+		dataType: string
+		lineageTag: f1ccd32d-e738-483d-b94f-79ceae4ddd82
+		summarizeBy: none
+		sourceColumn: Região de Governo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Região Metropolitana'
+		dataType: string
+		lineageTag: c60edc22-6268-4f70-b2bd-2e6f99f3e7e9
+		summarizeBy: none
+		sourceColumn: Região Metropolitana
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado = "São Paulo"
+		lineageTag: 80a132d4-47c0-4b1d-8386-07d264041a91
+		dataCategory: StateOrProvince
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Município Uppercase' = UPPER(('Regiões Administrativas SEADE'[Município]))
+		lineageTag: 6636a099-6ae3-4002-86b2-6d08184c432e
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Regiões Administrativas SEADE-857beeaf-0354-41b5-b9d9-c23cfe7dd62f' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202020-2023/Dados/Seade-Regionalizacoes-SP.csv"),[Delimiter=";", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"   Código", Int64.Type}, {"Município", type text}, {"Região Administrativa", type text}, {"Região de Governo", type text}, {"Região Metropolitana", type text}, {"Aglomerações Urbanas", type text}, {"", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [#"   Código"] <> null and [#"   Código"] <> ""),
+				    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each [Região Administrativa] <> null and [Região Administrativa] <> ""),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows1",{"Aglomerações Urbanas", ""}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Columns","Região Administrativa Central","RA Central",Replacer.ReplaceText,{"Região Administrativa"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","-","RM de São Paulo",Replacer.ReplaceText,{"Região Administrativa"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","Região Administrativa de ","RA de ",Replacer.ReplaceText,{"Região Administrativa"})
+				in
+				    #"Replaced Value2"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

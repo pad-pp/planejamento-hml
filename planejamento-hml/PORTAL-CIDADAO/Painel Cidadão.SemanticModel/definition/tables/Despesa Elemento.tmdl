@@ -1,0 +1,49 @@
+table 'Despesa Elemento'
+	excludeFromModelRefresh
+	lineageTag: 3c8d5fea-49f4-4e15-8b07-ec3cf7c999e5
+
+	column 'Código Elemento'
+		dataType: int64
+		formatString: 0
+		lineageTag: e546955c-378a-47de-8383-40e4509e5528
+		summarizeBy: none
+		sourceColumn: Código Elemento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Descrição Elemento'
+		dataType: string
+		lineageTag: 54dc7991-58b7-4c2b-9a42-0ffb7b3affac
+		summarizeBy: none
+		sourceColumn: Descrição Elemento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Elemento Descritivo' = CONCATENATE(RIGHT("00" & 'Despesa Elemento'[Código Elemento], 2), CONCATENATE(" - ", 'Despesa Elemento'[Descrição Elemento]))
+		lineageTag: deaea90e-bbd9-4b41-b5da-9589e5fca161
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Despesa Elemento' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/cad_elemento.xlsx"), null, true),
+				    cad_elemento_Sheet = Source{[Item="cad_elemento",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(cad_elemento_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Código Elemento", Int64.Type}, {"Descrição Elemento", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([Código Elemento] <> null))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

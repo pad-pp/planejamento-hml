@@ -1,0 +1,67 @@
+table 'Objetivos Estratégicos'
+	lineageTag: 8e4613f8-f2e2-4390-811b-1210b9d8c159
+
+	column Descrição
+		dataType: string
+		lineageTag: 5c35658d-0bea-4d0c-94f7-3e4e1706e7af
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Programa'
+		dataType: int64
+		formatString: 0
+		lineageTag: 329a96c1-95ea-4d42-925d-27e0c2b031dc
+		summarizeBy: none
+		sourceColumn: Código Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Código
+		dataType: int64
+		formatString: 0
+		lineageTag: ee8afb74-e2f1-4c93-bde2-51a0d5343756
+		summarizeBy: none
+		sourceColumn: Código
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: e45919ec-3fd3-4441-939e-f262585dac83
+		summarizeBy: none
+		sourceColumn: Nome
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Objetivos Estratégicos' = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/obj_estrategicos.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Ano", Int64.Type}, {"Objetivo Estratégico", type text}, {"Objetivo Estratégico Descrição", type text}, {"Código Programa", Int64.Type}}),
+				    #"Linhas Agrupadas" = Table.Group(#"Tipo Alterado", {"Código Programa"}, {{"Resto", each _, type table [Ano=nullable number, Código Programa=nullable number, Objetivo Estratégico=nullable text, Objetivo Estratégico Descrição=nullable text]}, {"Max Ano", each List.Max([Ano]), type nullable number}}),
+				    #"Resto Expandido" = Table.ExpandTableColumn(#"Linhas Agrupadas", "Resto", {"Ano", "Objetivo Estratégico", "Objetivo Estratégico Descrição"}, {"Ano", "Objetivo Estratégico", "Objetivo Estratégico Descrição"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Resto Expandido", each ([Ano] = [Max Ano])),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Linhas Filtradas",{"Ano", "Max Ano"}),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(#"Colunas Removidas", "Objetivo Estratégico", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"Objetivo Estratégico.1", "Código", "Nome"}),
+				    #"Colunas Removidas1" = Table.RemoveColumns(#"Dividir Coluna por Delimitador",{"Objetivo Estratégico.1"}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Removidas1",{{"Código", Int64.Type}, {"Nome", type text}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado1",{{"Objetivo Estratégico Descrição", "Descrição"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

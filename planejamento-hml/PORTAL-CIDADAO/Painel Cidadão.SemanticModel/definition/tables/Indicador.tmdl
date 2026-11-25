@@ -1,0 +1,276 @@
+table Indicador
+	lineageTag: 44622ded-7c57-4750-8a24-32961910be75
+
+	column 'Código Indicador'
+		dataType: int64
+		formatString: 0
+		lineageTag: 798e0535-166e-464a-a844-26e5e57f0288
+		summarizeBy: none
+		sourceColumn: Código Indicador
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Indicador'
+		dataType: string
+		lineageTag: 6a537d6c-c94f-4bd8-b5d2-be07a922d950
+		summarizeBy: none
+		sourceColumn: Nome Indicador
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unidade de Medida'
+		dataType: string
+		lineageTag: 4eba1754-318a-45d3-8556-dd6cd84c42db
+		summarizeBy: none
+		sourceColumn: Unidade de Medida
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de Indicador'
+		dataType: string
+		lineageTag: 2f6a0c89-5c22-47fc-a77a-8a37db2080f8
+		summarizeBy: none
+		sourceColumn: Tipo de Indicador
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Polaridade
+		dataType: string
+		lineageTag: 297b259c-9e29-4d03-8b2f-0d794a49addc
+		summarizeBy: none
+		sourceColumn: Polaridade
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Base Geográfica'
+		dataType: string
+		lineageTag: 8f2c00c4-a2ff-4743-b952-a552be19e04b
+		summarizeBy: none
+		sourceColumn: Base Geográfica
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Forma de Totalização Anual'
+		dataType: string
+		lineageTag: 703c3f6b-6887-46fb-8b69-6df3b57624cb
+		summarizeBy: none
+		sourceColumn: Forma de Totalização Anual
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Forma de Totalização PPA'
+		dataType: string
+		lineageTag: 3568f597-6b0c-4b6c-ac8a-7ffe7df596c9
+		summarizeBy: none
+		sourceColumn: Forma de Totalização PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Periodicidade
+		dataType: string
+		lineageTag: 4b87fe81-e5db-4c0d-9fd2-b34f8e2c0002
+		summarizeBy: none
+		sourceColumn: Periodicidade
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meta ao Final do PPA'
+		dataType: double
+		lineageTag: 713b3912-580b-41ab-936c-5a9283c60480
+		summarizeBy: none
+		sourceColumn: Meta ao Final do PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Categoria Indicador'
+		dataType: string
+		lineageTag: a88e4518-812d-4365-a2fe-d4fada95ea9a
+		summarizeBy: none
+		sourceColumn: Categoria Indicador
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Produto'
+		dataType: int64
+		formatString: 0
+		lineageTag: 02aeb6e8-6947-4e08-8bd6-10e8d7d69ec1
+		summarizeBy: none
+		sourceColumn: Código Produto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Órgão Responsável Indicador'
+		dataType: int64
+		formatString: 0
+		lineageTag: dd79b607-3066-4250-a1d1-00545c3f57e6
+		summarizeBy: none
+		sourceColumn: Código Órgão Responsável Indicador
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Código Programa'
+		dataType: int64
+		formatString: 0
+		lineageTag: e6ba6b53-4187-49ad-bb7e-1fff36b5f9ab
+		summarizeBy: none
+		sourceColumn: Código Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column Descrição
+		dataType: string
+		lineageTag: 40bd7fb5-e7a1-476e-a69c-b4f889b05150
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fonte
+		dataType: string
+		lineageTag: cd7a361a-7c5b-45f8-a19d-c43757fc3463
+		summarizeBy: none
+		sourceColumn: Fonte
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valor Linha de Base'
+		dataType: double
+		lineageTag: b00f45fb-52bc-48b3-a599-c310877b9066
+		summarizeBy: none
+		sourceColumn: Valor Linha de Base
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Período Linha de Base'
+		dataType: string
+		lineageTag: e74818a0-c2ca-4907-a05f-20d3d55d5036
+		summarizeBy: none
+		sourceColumn: Período Linha de Base
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Explicação Meta ao Final do PPA'
+		dataType: string
+		lineageTag: 846e3e3a-1fa6-4f78-95a6-78ecb293b336
+		summarizeBy: none
+		sourceColumn: Explicação Meta ao Final do PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Totalização do Indicador é Somatório das Metas das Ações'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c1064c21-7daf-444f-b52f-5758b2081c6d
+		summarizeBy: none
+		sourceColumn: Totalização do Indicador é Somatório das Metas das Ações
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Totalização da Ação é Somatório das Metas das UOs'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f2f0ce2e-0e4f-4cf5-bd84-54ea5a228f46
+		summarizeBy: none
+		sourceColumn: Totalização da Ação é Somatório das Metas das UOs
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código e Nome Indicador'
+		dataType: string
+		lineageTag: 76592f56-5caf-4b48-a4bc-bf4e25946771
+		summarizeBy: none
+		sourceColumn: Código e Nome Indicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Órgão Responsável'
+		dataType: string
+		lineageTag: af4f5ab0-cb0a-46e1-b7f8-a02ddc49c4ba
+		summarizeBy: none
+		sourceColumn: Órgão Responsável
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Programa'
+		dataType: string
+		lineageTag: b00ffd82-b527-4c83-920e-e75524b3c029
+		summarizeBy: none
+		sourceColumn: Nome Programa
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Possui Metas Anuais'
+		dataType: string
+		lineageTag: c378d36f-b05a-44c2-a724-de9d6a6be1df
+		summarizeBy: none
+		sourceColumn: Possui Metas Anuais
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Linha de Base Correta'
+		dataType: string
+		lineageTag: b862f855-1a96-4595-a0be-71b8c7e9bd97
+		summarizeBy: none
+		sourceColumn: Linha de Base Correta
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Indicador-e08b3d67-d081-47ce-b8f1-3ee3e52ada5d = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("6wulhtcapyqe5g3tfjv5bptbuq-opuyt6vmlbne7dponfisybylqa.datawarehouse.fabric.microsoft.com", "PAD_PP_MODELO_SEMANTICO"),
+				    dbo_indicador = Fonte{[Schema="dbo",Item="v_indicador"]}[Data]
+				in
+				    dbo_indicador
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

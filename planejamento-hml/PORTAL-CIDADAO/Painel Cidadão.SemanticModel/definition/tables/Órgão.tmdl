@@ -1,0 +1,61 @@
+table Órgão
+	lineageTag: e2ceca4b-910f-4a89-b0a0-b3c6b0f112f3
+
+	column Poder
+		dataType: string
+		lineageTag: 13baff1b-5b8a-4a65-84f8-bab1456a6363
+		summarizeBy: none
+		sourceColumn: Poder
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código e Nome Órgão'
+		dataType: string
+		lineageTag: 54552177-a31a-4ecd-911f-18ddf9dfceb3
+		summarizeBy: none
+		sourceColumn: Código e Nome Órgão
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Órgão'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4efec61a-dd30-4ea4-b967-fa75b6b34137
+		summarizeBy: none
+		sourceColumn: Código Órgão
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Órgão'
+		dataType: string
+		lineageTag: 0929efbc-0b6e-4207-bf1c-f76d9fae6553
+		summarizeBy: none
+		sourceColumn: Nome Órgão
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Órgão Simplificado'
+		dataType: string
+		lineageTag: 186f5b61-32ad-4f1f-9d8b-ffa58620c77a
+		summarizeBy: none
+		sourceColumn: Nome Órgão Simplificado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Órgão-c2fdfb7e-51a8-4c9d-b87c-7f3f0e053d5f = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("6wulhtcapyqe5g3tfjv5bptbuq-opuyt6vmlbne7dponfisybylqa.datawarehouse.fabric.microsoft.com", "PAD_PP_MODELO_SEMANTICO"),
+				    dbo_orgao = Fonte{[Schema="dbo",Item="v_orgao"]}[Data]
+				in
+				    dbo_orgao
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,51 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Arquivo Indicadores","Unidade Administrativa","Regiões Administrativas SEADE","Políticas Públicas","Programa","Órgão","Produto","Ação Apuração","Produto ODS","Indicador","Indicador Apuração","Produto Beneficiários","Órgão Executor Programa","Indicador Histórico Metas","Indicador Descontinuado","Objetivos Estratégicos","Última Atualização dos Dados","indicadores_anual_hist","indicadores_ppa_hist","Paineis Indicadores de Impacto","Ação","Ação UOs","Unidade Orçamentária","Ação Apuração Detalhada","Despesa Categoria","Despesa Elemento","Despesa Grupo","ODS"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_f7ae24af-6cc4-4f9b-85e6-941cfb444081
+ref table 'Unidade Administrativa'
+ref table 'Regiões Administrativas SEADE'
+ref table 'Políticas Públicas'
+ref table Programa
+ref table Órgão
+ref table Produto
+ref table 'Produto ODS'
+ref table Indicador
+ref table _Medidas
+ref table 'Produto Beneficiários'
+ref table 'Órgão Executor Programa'
+ref table 'Indicador Descontinuado'
+ref table LocalDateTable_7b447ee4-e2d9-468e-872b-ed27ade5c846
+ref table LocalDateTable_5be2fa13-eec2-484c-962d-2815dfd1b59e
+ref table 'Objetivos Estratégicos'
+ref table 'Última Atualização dos Dados'
+ref table 'Indicador Apuração'
+ref table LocalDateTable_ff886ec6-5530-46a4-bf36-cf3660e514ff
+ref table 'Ação Apuração'
+ref table 'Indicador Histórico Metas'
+ref table 'Paineis Indicadores de Impacto'
+ref table 'Meses PPA'
+ref table Ação
+ref table 'Ação UOs'
+ref table 'Unidade Orçamentária'
+ref table 'Ação Apuração Detalhada'
+ref table LocalDateTable_2df8d37c-62f8-47b1-8c31-603364a34f44
+ref table 'Despesa Categoria'
+ref table 'Despesa Elemento'
+ref table 'Despesa Grupo'
+ref table ODS
+ref table LocalDateTable_056d6a3a-8d0a-46a0-9557-50b161dde78c
+
+ref cultureInfo pt-BR
+

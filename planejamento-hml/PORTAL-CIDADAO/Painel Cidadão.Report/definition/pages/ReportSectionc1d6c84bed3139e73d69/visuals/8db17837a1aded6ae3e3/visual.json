@@ -1,0 +1,290 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "8db17837a1aded6ae3e3",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 2000,
+    "height": 388.76790830945555,
+    "width": 581.92932187201529,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "lineClusteredColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ação Apuração"
+                    }
+                  },
+                  "Property": "Mês Apuração"
+                }
+              },
+              "queryRef": "Produto Apuração.Mês Apuração",
+              "nativeQueryRef": "Mês Apuração",
+              "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Ação Apuração"
+                        }
+                      },
+                      "Property": "Liquidado no Ano / Dotação Atualizada (em %)"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "CountNonNull(Ação Apuração.Liquidado no Ano / Dotação Atualizada (em %))",
+              "nativeQueryRef": "Execução Orçamentária",
+              "displayName": "Execução Orçamentária"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Ação Apuração"
+                        }
+                      },
+                      "Property": "Dotação no Mês"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Produto Apuração.Dotação no Mês)",
+              "nativeQueryRef": "Dotação1",
+              "displayName": "Dotação"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Ação Apuração"
+                        }
+                      },
+                      "Property": "Liquidação Acumulada no Ano"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Produto Apuração.Liquidação Acumulada no Ano)",
+              "nativeQueryRef": "Liquidação1",
+              "displayName": "Liquidação"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Ação Apuração"
+                        }
+                      },
+                      "Property": "Dotação Inicial do Ano"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Produto Apuração.Dotação Inicial do Ano)",
+              "nativeQueryRef": "Dotação em LOA do Ano1",
+              "displayName": "Dotação em LOA do Ano"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Ação Apuração"
+                  }
+                },
+                "Property": "Mês Apuração"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "maxMarginFactor": {
+              "expr": {
+                "Literal": {
+                  "Value": "20L"
+                }
+              }
+            },
+            "concatenateLabels": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categorical'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "secShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000000D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "showSeries": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Produto Apuração.Dotação Inicial do Ano)"
+          }
+        },
+        {
+          "properties": {
+            "showSeries": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Produto Apuração.Dotação no Mês)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Liquidação Mensal'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "showFilterRestatementButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "737bd5355906a00878a3",
+  "isHidden": true
+}

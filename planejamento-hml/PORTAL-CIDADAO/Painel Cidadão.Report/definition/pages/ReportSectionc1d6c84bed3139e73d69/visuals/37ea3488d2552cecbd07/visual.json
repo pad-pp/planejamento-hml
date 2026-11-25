@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "37ea3488d2552cecbd07",
+  "position": {
+    "x": 68.3495145631068,
+    "y": 142.37731733914939,
+    "z": 9500,
+    "height": 491.61283044410186,
+    "width": 1162.950315079142,
+    "tabOrder": 15000
+  },
+  "visualGroup": {
+    "displayName": "Ficha Cadastral",
+    "groupMode": "ScaleMode"
+  }
+}

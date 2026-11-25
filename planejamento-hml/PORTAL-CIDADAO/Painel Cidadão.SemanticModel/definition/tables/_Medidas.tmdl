@@ -1,0 +1,68 @@
+table _Medidas
+	lineageTag: 06382402-aa11-44b4-8b3c-7780415b4c71
+
+	measure 'Posição Indicador' = ROWNUMBER(ALLSELECTED('Indicador Apuração'))
+		formatString: 0
+		lineageTag: ab5c7155-e3bc-4c0a-b47d-a111e40c5b12
+
+	measure 'Total Indicadores' = COUNT('Produto'[Código Produto])+0.2
+		formatString: 0
+		lineageTag: 88c2efb7-05e3-4e86-b87d-f15e7759c226
+
+	measure 'Cor de Tela Opaca quando Programa Selecionado' = IF(ISBLANK(SELECTEDVALUE(Programa[Nome Programa])), "White", "#FFFFFF00")
+		displayFolder: Cores de Visuais
+		lineageTag: 801f0a81-bacb-49cd-a6f0-a1413587c2a8
+
+	measure 'Cor de Visual Indicador de Resultado' = IF(SELECTEDVALUE(Indicador[Categoria Indicador], "Resultado") <> "Resultado", "#FFF1E000", "Black")
+		displayFolder: Cores de Visuais
+		lineageTag: ddcff6f0-61f8-4762-b7f8-3bbc5164d4d7
+
+	measure 'Cor de Visual Indicador de Produto' = IF(SELECTEDVALUE(Indicador[Categoria Indicador], "Produto") <> "Produto", "#FFF1E000", "Black")
+		displayFolder: Cores de Visuais
+		lineageTag: d175e2ee-7fbb-4cb7-b9d9-eeaebb757975
+
+	measure 'Cor de Visual Produto com Meta Prioritária' = IF(SELECTEDVALUE(Produto[Produto Prioritário]), "#FFF1E000", "White")
+		displayFolder: Cores de Visuais
+		lineageTag: 101a006f-62e4-4dc2-942e-75a5d3d69ba9
+
+	measure 'Cor de Visual quando Produto Selecionado' = IF(ISBLANK(SELECTEDVALUE(Produto[Nome Produto])), "#FFFFFF00", "Black")
+		displayFolder: Cores de Visuais
+		lineageTag: f649eea0-7640-4d49-b93f-540dbb8a7041
+
+	measure 'Cor de Visual quando OE Selecionado' = IF(ISBLANK(SELECTEDVALUE('Objetivos Estratégicos'[Nome])), "#FFFFFF00", "Black")
+		displayFolder: Cores de Visuais
+		lineageTag: c032b627-e1ac-471f-93fc-a7cd9f069af6
+
+	measure 'Produto Filtrado' = IF(SELECTEDVALUE(Produto[Nome Produto], "") == "INDICADORES DE RESULTADO", "", "Produto")
+		lineageTag: 5db9b424-e21a-4997-8fdb-ea4997339107
+
+	measure 'Cor de Visual quando Programa Selecionado' = IF(AND(NOT(ISBLANK(SELECTEDVALUE(Programa[Nome Programa]))), ISBLANK(SELECTEDVALUE(Produto[Nome Produto]))), "Black", "#FFFFFF00")
+		displayFolder: Cores de Visuais
+		lineageTag: bbfb71a1-d4e8-4bea-bcdd-20eb9c228230
+
+	measure 'Percentual Mínimo de Execução de Meta Física' = 0.9
+		lineageTag: 528cdcb9-c1c5-4c77-9b22-e4ff9e53367e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Percentual Máximo de Execução de Meta Física' = 1.3
+		lineageTag: 339dd94f-2fbf-4637-bfb2-c0bdfd1f3ef3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _Medidas
+		formatString: 0
+		lineageTag: 5b6744be-813d-4b59-a23a-a962778029ec
+		summarizeBy: sum
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Medidas-c8267982-f00d-4b9e-acb9-14bf4138c978 = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 40120ee0ed734f22824095957c8c8848
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

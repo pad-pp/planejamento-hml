@@ -1,0 +1,261 @@
+table 'Ação Apuração Detalhada'
+	lineageTag: 6c901a22-d826-49b0-8cd1-4c2ed2664078
+
+	column 'Código Ação'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e3172e9-2e66-4e87-9144-e7578a894cb1
+		summarizeBy: none
+		sourceColumn: Código Ação
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Órgão'
+		dataType: int64
+		formatString: 0
+		lineageTag: ec0a058e-a5fd-4813-88f3-84eac55537cc
+		summarizeBy: none
+		sourceColumn: Código Órgão
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código UO'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0cdc5bae-1296-4063-9bc9-509d48ddaeaa
+		summarizeBy: none
+		sourceColumn: Código UO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Categoria'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c39c9dc-3553-4864-b126-56a994305e29
+		summarizeBy: none
+		sourceColumn: Código Categoria
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Grupo'
+		dataType: int64
+		formatString: 0
+		lineageTag: b7cea292-d2e8-4620-a817-1230b3704a82
+		summarizeBy: none
+		sourceColumn: Código Grupo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Elemento'
+		dataType: int64
+		formatString: 0
+		lineageTag: 41e4d86b-4d55-4db8-9de6-017eda51c1f7
+		summarizeBy: none
+		sourceColumn: Código Elemento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dotação Inicial do Ano'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 9a347b83-13c3-4e6d-9162-f7f80c0adf0f
+		summarizeBy: sum
+		sourceColumn: Dotação Inicial do Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Dotação no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 936f91d2-f09d-4fe8-b486-7f6f458547ed
+		summarizeBy: sum
+		sourceColumn: Dotação no Mês
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidação Acumulada no Ano'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 56d9b8eb-074d-4fe9-a773-774cff9a6751
+		summarizeBy: sum
+		sourceColumn: Liquidação Acumulada no Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column Fonte
+		dataType: string
+		lineageTag: e9e0a562-2305-4aad-b5d2-5081ca57521f
+		summarizeBy: none
+		sourceColumn: Fonte
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mês Apuração'
+		dataType: dateTime
+		formatString: mmmm" de "yyyy
+		lineageTag: 54f84bf1-2459-4021-a4db-c522fa0e8ef2
+		summarizeBy: none
+		sourceColumn: Mês Apuração
+
+		variation Variation
+			isDefault
+			relationship: 85362f2c-64fe-41c1-8787-dce592c630c7
+			defaultHierarchy: LocalDateTable_2df8d37c-62f8-47b1-8c31-603364a34f44.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'É Última Apuração do Ano?' = 'Ação Apuração Detalhada'[Mês Apuração] == CALCULATE(MAX('Ação Apuração Detalhada'[Mês Apuração]), FILTER('Ação Apuração Detalhada', 'Ação Apuração Detalhada'[Código Ação] = EARLIER('Ação Apuração Detalhada'[Código Ação])))
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 370e3d2a-ba71-41ef-82e5-2df518c3f93d
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Programa'
+		dataType: int64
+		formatString: 0
+		lineageTag: d9df8bdb-b437-430e-9397-0c5a696fab63
+		summarizeBy: sum
+		sourceColumn: Código Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Produto'
+		dataType: int64
+		formatString: 0
+		lineageTag: 36b5674f-d456-40a7-996c-b0921a6b4d2a
+		summarizeBy: sum
+		sourceColumn: Código Produto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Liquidação no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: ce05cefa-1fce-44a2-932f-8b91c501c38b
+		summarizeBy: sum
+		sourceColumn: Liquidação no Mês
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidado no Ano / Dotação Atualizada (em %)'
+		dataType: double
+		lineageTag: 217a1bf0-611c-46dd-8f70-bd819d40bc40
+		summarizeBy: sum
+		sourceColumn: Liquidado no Ano / Dotação Atualizada (em %)
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Liquidação Esperada no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 9ec0809c-4828-4719-ad58-e1efde38317d
+		summarizeBy: sum
+		sourceColumn: Liquidação Esperada no Mês
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidação Esperada no Ano'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 7dab39a3-aaeb-4924-9597-211da4c9fdd1
+		summarizeBy: sum
+		sourceColumn: Liquidação Esperada no Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Dotação Disponível no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 8925a6df-306b-4c3e-81ca-8cc71184cafa
+		summarizeBy: sum
+		sourceColumn: Dotação Disponível no Mês
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Contingenciado no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 738f98b0-55fc-452e-89c5-9b5dea8521d6
+		summarizeBy: sum
+		sourceColumn: Contingenciado no Mês
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition 'Ação Apuração Detalhada' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/execucao_orcamentaria.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Promoted Headers",{{"Liquidado no Ano / Dotação Atualizada (em %)", type number}, {"Código Programa", Int64.Type}, {"Código Produto", Int64.Type}, {"Código Ação", Int64.Type}, {"Código Órgão", Int64.Type}, {"Código UO", Int64.Type}, {"Código Categoria", Int64.Type}, {"Código Grupo", Int64.Type}, {"Código Elemento", Int64.Type}, {"Mês Apuração", type date}, {"Dotação Inicial do Ano", Currency.Type}, {"Dotação no Mês", Currency.Type}, {"Dotação Disponível no Mês", Currency.Type}, {"Liquidação Acumulada no Ano", Currency.Type}, {"Contingenciado no Mês", Currency.Type}, {"Liquidação no Mês", Currency.Type}, {"Liquidação Esperada no Mês", Currency.Type}, {"Liquidação Esperada no Ano", Currency.Type}}),
+				    #"Divide Liquidado/Dotação por 100" = Table.TransformColumns(#"Tipo Alterado", {{"Liquidado no Ano / Dotação Atualizada (em %)", each _ / 100, Percentage.Type}})
+				in
+				    #"Divide Liquidado/Dotação por 100"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

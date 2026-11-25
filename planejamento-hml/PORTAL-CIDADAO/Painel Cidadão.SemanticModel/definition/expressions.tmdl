@@ -1,0 +1,59 @@
+expression 'Arquivo Indicadores' =
+		let
+		    Fonte = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/apuracoes.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+		    #"Colunas Removidas" = Table.RemoveColumns(#"Cabeçalhos Promovidos",{"Possui Justificativa para TCE"}),
+		    #"Remove Programas fora PPA" = Table.SelectRows(#"Colunas Removidas", each ([Código Programa] <> "0" and [Código Programa] <> "1" and [Código Programa] <> "102" and [Código Programa] <> "2101" and [Código Programa] <> "5125" and [Código Programa] <> "5303")),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Remove Programas fora PPA",{{"Código Órgão Responsável Programa", Int64.Type}, {"Código Programa", Int64.Type}, {"Código Produto", Int64.Type}, {"Código Indicador", Int64.Type}, {"Código Órgão Responsável Indicador", Int64.Type}, {"Meta do Ano", type number}, {"Meta ao Final do PPA", type number}, {"Valor Apurado no Mês", type number}, {"Mês Apuração", type date}, {"Valor Apurado Acumulado no Ano", type number}, {"Valor Apurado Acumulado no PPA", type number}, {"Valor Linha de Base", type number}, {"Meta Esperada no Ano", type number}, {"Meta Esperada no PPA", type number}, {"Dotação Inicial do Ano", Currency.Type}, {"Dotação no Mês", Currency.Type}, {"Dotação Disponível no Mês", Currency.Type}, {"Dotação Inicial Acumulada no PPA", Currency.Type}, {"Dotação Acumulada no PPA", Currency.Type}, {"Liquidação Acumulada no Ano", Currency.Type}, {"Custo Anual Unitário Inicial Esperado no Ano", Currency.Type}, {"Custo Anual Unitário Esperado no Ano", Currency.Type}, {"Custo Anual Unitário Apurado no Ano", Currency.Type}, {"Liquidado no Ano / Dotação Atualizada (em %)", Currency.Type}, {"Liquidação Acumulada no PPA", Currency.Type}, {"Liquidação Esperada no Ano", Currency.Type}, {"Percentual de Cumprimento Esperado da Meta do Ano", type number}, {"Percentual de Cumprimento Esperado da Meta do PPA", type number}, {"Percentual de Cumprimento da Meta do Ano", type number}, {"Percentual de Cumprimento da Meta do PPA", type number}, {"Liquidação no Mês", Currency.Type}, {"Liquidação Esperada no Mês", Currency.Type}, {"Liquidação Esperada no PPA", Currency.Type}, {"Código Ação", Int64.Type}, {"Totalização do Indicador é Somatório das Metas das Ações", type logical}, {"Totalização da Ação é Somatório das Metas das UOs", type logical}, {"Dotação Disponível Acumulada no PPA", Currency.Type}, {"Contingenciado no Mês", Currency.Type}}),
+		    #"Percentuais nulos viram 0%" = Table.ReplaceValue(#"Tipo Alterado",null,0,Replacer.ReplaceValue,{"Percentual de Cumprimento Esperado da Meta do Ano", "Percentual de Cumprimento Esperado da Meta do PPA", "Percentual de Cumprimento da Meta do Ano", "Percentual de Cumprimento da Meta do PPA"}),
+		    #"inf vira 0 em % Cumprimento Meta" = Table.ReplaceErrorValues(#"Percentuais nulos viram 0%", {{"Percentual de Cumprimento da Meta do Ano", 0}, {"Percentual de Cumprimento da Meta do PPA", 0}, {"Liquidado no Ano / Dotação Atualizada (em %)", 0}}),
+		    #"Cumprim esperado Ano em %" = Table.TransformColumns(#"inf vira 0 em % Cumprimento Meta", {{"Percentual de Cumprimento Esperado da Meta do Ano", each _ / 100, Percentage.Type}}),
+		    #"Cumprim esperado PPA em %" = Table.TransformColumns(#"Cumprim esperado Ano em %", {{"Percentual de Cumprimento Esperado da Meta do PPA", each _ / 100, Percentage.Type}}),
+		    #"Cumprim Meta Ano em %" = Table.TransformColumns(#"Cumprim esperado PPA em %", {{"Percentual de Cumprimento da Meta do Ano", each _ / 100, Percentage.Type}}),
+		    #"Cumprim Meta PPA em %" = Table.TransformColumns(#"Cumprim Meta Ano em %", {{"Percentual de Cumprimento da Meta do PPA", each _ / 100, Percentage.Type}}),
+		    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Cumprim Meta PPA em %", "Houve Apuração no Mês?", each [Valor Apurado no Mês] <> null, type logical),
+		    #"Sem valor apurado acumulado vira 0" = Table.ReplaceValue(#"Coluna Condicional Adicionada",null,0,Replacer.ReplaceValue,{"Valor Apurado Acumulado no Ano", "Valor Apurado Acumulado no PPA"}),
+		    #"Custo Unitário com erro vira 0" = Table.ReplaceErrorValues(#"Sem valor apurado acumulado vira 0", {{"Custo Anual Unitário Inicial Esperado no Ano", 0}, {"Custo Anual Unitário Esperado no Ano", 0}, {"Custo Anual Unitário Apurado no Ano", 0}}),
+		    #"Zera liquidação nula" = Table.ReplaceValue(#"Custo Unitário com erro vira 0",null,0,Replacer.ReplaceValue,{"Liquidado no Ano / Dotação Atualizada (em %)"}),
+		    #"% Liquidação / 100" = Table.TransformColumns(#"Zera liquidação nula", {{"Liquidado no Ano / Dotação Atualizada (em %)", each _ / 100, type number}}),
+		    #"% Liquidação em %" = Table.TransformColumnTypes(#"% Liquidação / 100",{{"Liquidado no Ano / Dotação Atualizada (em %)", Percentage.Type}})
+		in
+		    #"% Liquidação em %"
+	lineageTag: 2043c501-0666-4064-b4a2-6657ecc35ec4
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+
+expression indicadores_anual_hist =
+		let
+		    Fonte = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/indicadores_anual_hist.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código Indicador", Int64.Type}, {"Ano", Int64.Type}, {"Código Fase", Int64.Type}, {"Sigla Fase", type text}, {"Meta Anual", type number}}),
+		    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "Tipo Meta", each "Anual"),
+		    #"Colunas Renomeadas" = Table.RenameColumns(#"Personalização Adicionada",{{"Meta Anual", "Meta"}}),
+		    #"Remove Históricos que não mudaram meta" = Table.Distinct(#"Colunas Renomeadas", {"Código Indicador", "Ano", "Meta"})
+		in
+		    #"Remove Históricos que não mudaram meta"
+	lineageTag: 1a193778-ac65-4578-8614-c2c163e42b82
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression indicadores_ppa_hist =
+		let
+		    Fonte = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/indicadores_ppa_hist.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código Indicador", Int64.Type}, {"Ano", Int64.Type}, {"Código Fase", Int64.Type}, {"Sigla Fase", type text}, {"Meta ao Final do PPA", type number}}),
+		    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "Tipo Meta", each "Final do PPA"),
+		    #"Colunas Renomeadas" = Table.RenameColumns(#"Personalização Adicionada",{{"Meta ao Final do PPA", "Meta"}}),
+		    #"Duplicatas Removidas" = Table.Distinct(#"Colunas Renomeadas", {"Código Indicador", "Meta"})
+		in
+		    #"Duplicatas Removidas"
+	lineageTag: dd6da0f6-a2d3-4457-84f2-3efe3e53a170
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

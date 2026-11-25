@@ -1,0 +1,72 @@
+table 'Paineis Indicadores de Impacto'
+	lineageTag: 50c2b6c4-ff02-4fc8-83cb-fbc179f27ef6
+
+	column 'Código OE'
+		dataType: int64
+		formatString: 0
+		lineageTag: efcb8706-09ba-4ab7-bb40-8d38dd802a31
+		summarizeBy: none
+		sourceColumn: Código OE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Imagem
+		dataType: string
+		lineageTag: eec6b058-7c3b-4771-8681-e1e4ed4048ee
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: Imagem
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PowerBI Impacto'
+		dataType: string
+		lineageTag: bbdd1d23-ba7a-40e3-b7dd-c2a6eec7c5e0
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: PowerBI Impacto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: 02e19d58-04e9-4203-987b-54586ffced9e
+		summarizeBy: none
+		sourceColumn: Nome
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Anexo Metodológico'
+		dataType: string
+		lineageTag: 202f6b8d-db25-4e36-81a9-b0619555d717
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: Anexo Metodológico
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Paineis Indicadores de Impacto' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/paineis%20impacto.xlsx"), null, true),
+				    Plan1_Sheet = Fonte{[Item="Plan1",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Plan1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código OE", Int64.Type}, {"Nome", type text}, {"Imagem", type text}, {"PowerBI Impacto", type text}, {"Anexo Metodológico", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

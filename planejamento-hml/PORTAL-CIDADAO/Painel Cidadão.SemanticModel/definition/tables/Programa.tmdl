@@ -1,0 +1,116 @@
+table Programa
+	lineageTag: 2b9d90e0-a84e-4a0e-a949-5a57a4936ee8
+
+	column 'Código Programa'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0986c00e-bee4-4faf-b695-dd82756d18c6
+		summarizeBy: none
+		sourceColumn: Código Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Programa'
+		dataType: string
+		lineageTag: 588dc84b-e6ce-4382-9ed7-0c61edcc2e16
+		summarizeBy: none
+		sourceColumn: Nome Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Objetivo Programa'
+		dataType: string
+		lineageTag: 9475bf03-21fb-4ca2-b759-04c061f10b02
+		summarizeBy: none
+		sourceColumn: Objetivo Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Órgão Responsável Programa'
+		dataType: int64
+		formatString: 0
+		lineageTag: d22f5c51-e4f9-4524-aae7-bfb709c9299b
+		summarizeBy: none
+		sourceColumn: Código Órgão Responsável Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Diagnóstico Programa'
+		dataType: string
+		lineageTag: 8f5d4e3f-f193-4e66-9c20-d419c1dfe644
+		summarizeBy: none
+		sourceColumn: Diagnóstico Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código e Nome Programa'
+		dataType: string
+		lineageTag: 42c1a82e-ad14-47b5-b753-1e1a4c1e2d14
+		summarizeBy: none
+		sourceColumn: Código e Nome Programa
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Abrangência Espacial'
+		dataType: string
+		lineageTag: 72ab2687-0a24-4eb4-bdf3-cafbbe6e9e4f
+		summarizeBy: none
+		sourceColumn: Abrangência Espacial
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: c54c4799-b17f-47e2-a559-cd30a7a7282a
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classificação
+		dataType: string
+		lineageTag: b544e071-b1c6-4907-aec5-d3ed595d5884
+		summarizeBy: none
+		sourceColumn: Classificação
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Órgão Responsável'
+		dataType: string
+		lineageTag: ae581b1e-ee07-40d6-ac99-826b8f70555b
+		summarizeBy: none
+		sourceColumn: Órgão Responsável
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Poder Órgão Responsável'
+		dataType: string
+		lineageTag: a6cb6d50-1383-4eb1-9861-fa1eadf1f4e4
+		summarizeBy: none
+		sourceColumn: Poder Órgão Responsável
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Programa-88cc9bba-b8eb-4fb3-a7f5-0eab04c697ef = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("6wulhtcapyqe5g3tfjv5bptbuq-opuyt6vmlbne7dponfisybylqa.datawarehouse.fabric.microsoft.com", "PAD_PP_MODELO_SEMANTICO"),
+				    dbo_programa = Fonte{[Schema="dbo",Item="v_programa"]}[Data]
+				in
+				    dbo_programa
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

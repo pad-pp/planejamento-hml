@@ -1,0 +1,326 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "118981dc0e3433a16a1b",
+  "position": {
+    "x": 9.6800420871395119,
+    "y": 394.075884631294,
+    "z": 1000,
+    "height": 97.536945812807886,
+    "width": 370.64039408866995,
+    "tabOrder": 23000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Políticas Públicas"
+                    }
+                  },
+                  "Property": "Política Pública"
+                }
+              },
+              "queryRef": "Políticas Públicas.Política Pública",
+              "nativeQueryRef": "Políticas Públicas",
+              "displayName": "Políticas Públicas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Políticas Públicas"
+                  }
+                },
+                "Property": "Política Pública"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.80459852709511D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Produto.Código Produto"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "396.86193525773604D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Produto.Nome Produto"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "370.28227762540985D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Indicador.Código e Nome Indicador"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.74179349175238D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Apuração.Meta do Ano)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "107.04917214631897D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Apuração.Percentual de Cumprimento da Meta do Ano"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "111.04918087893233D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Apuração.Liquidado no Ano / Dotação Atualizada (em %)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "29.311484325505795D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Medidas.Posição Indicador"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "92.35849056603773D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Apuração.Valor Apurado Acumulado no Ano)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "344.761925537756D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Produto Beneficiários.Beneficiário"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "346.91141125329364D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Políticas Públicas.Política Pública"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Políticas Públicas'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Canvas'"
+                }
+              }
+            },
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showFilterRestatementButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "37ea3488d2552cecbd07"
+}

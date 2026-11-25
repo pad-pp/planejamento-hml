@@ -1,0 +1,148 @@
+relationship acf7fe17-9c69-4d97-a1e6-3827f94513f1
+	fromColumn: 'Unidade Administrativa'.'Nome Município'
+	toColumn: 'Regiões Administrativas SEADE'.'Nome Município Uppercase'
+
+relationship 1b17327c-f305-4ac0-8c13-80d8be1ffd3c
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Produto ODS'.'Código Produto'
+	toColumn: Produto.'Código Produto'
+
+relationship 937ab0fe-9289-4f0f-a40c-bd4b9ee706bb
+	crossFilteringBehavior: bothDirections
+	fromColumn: Indicador.'Código Produto'
+	toColumn: Produto.'Código Produto'
+
+relationship 51aae974-2baa-4aa4-b906-9084a84ecc02
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Políticas Públicas'.'Código Produto'
+	toColumn: Produto.'Código Produto'
+
+relationship 091b7637-341e-41ca-952b-174d8f87de06
+	crossFilteringBehavior: bothDirections
+	fromColumn: Produto.'Código Programa'
+	toColumn: Programa.'Código Programa'
+
+relationship 5eac39b7-a219-4ec5-9b63-79c5198f221b
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Produto Beneficiários'.'Código Produto'
+	toColumn: Produto.'Código Produto'
+
+relationship fd2d0f09-f321-42cc-ae7c-6cb329c0907a
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Órgão Executor Programa'.'Código Programa'
+	toColumn: Programa.'Código Programa'
+
+relationship dfada4dd-9b64-47b0-9c74-5c84303458e3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Indicador Descontinuado'.Início
+	toColumn: LocalDateTable_7b447ee4-e2d9-468e-872b-ed27ade5c846.Date
+
+relationship 48e7b68b-6a9a-4ed8-ad5a-a6af8b8c259a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Indicador Descontinuado'.Fim
+	toColumn: LocalDateTable_5be2fa13-eec2-484c-962d-2815dfd1b59e.Date
+
+relationship 524ad789-a423-4b48-a4f5-0ff56264bc88
+	fromColumn: 'Indicador Descontinuado'.'Código Indicador'
+	toColumn: Indicador.'Código Indicador'
+
+relationship 44f15278-a8ec-467f-96db-6cc4e7629fa6
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Objetivos Estratégicos'.'Código Programa'
+	toColumn: Programa.'Código Programa'
+
+relationship 7a7e975e-ed00-4248-ab7e-73aae3ee5820
+	fromColumn: 'Indicador Apuração'.'Código Indicador'
+	toColumn: Indicador.'Código Indicador'
+
+relationship af52f5d8-050b-487f-82e0-a62862483b8b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Indicador Apuração'.'Última Apuração Esperada'
+	toColumn: LocalDateTable_ff886ec6-5530-46a4-bf36-cf3660e514ff.Date
+
+relationship 5360ef0f-99ed-4b1f-8897-ffb22a5febd6
+	fromColumn: 'Indicador Histórico Metas'.'Código Indicador'
+	toColumn: Indicador.'Código Indicador'
+
+relationship 540e356f-7a66-4a9d-ab6e-13794f7e5f7c
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromColumn: Indicador.'Código Programa'
+	toColumn: Programa.'Código Programa'
+
+relationship 6bdd7f80-685e-47fd-9025-b7ab901a6afa
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Objetivos Estratégicos'.Código
+	toColumn: 'Paineis Indicadores de Impacto'.'Código OE'
+
+relationship a3ef052c-cb5c-45d4-b608-8c8c0adba649
+	fromColumn: 'Indicador Apuração'.'Mês Apuração'
+	toColumn: 'Meses PPA'.Mês
+
+relationship 482f5ab1-d5da-44df-8d11-40df70c844b6
+	fromColumn: 'Ação Apuração'.'Mês Apuração'
+	toColumn: 'Meses PPA'.Mês
+
+relationship 56dd00bd-bcff-41b4-84f1-29b5cb2efc73
+	crossFilteringBehavior: bothDirections
+	fromColumn: Ação.'Código Produto'
+	toColumn: Produto.'Código Produto'
+
+relationship cca9a7a9-e76b-40e4-b2b3-4585a7e59c04
+	fromColumn: 'Ação UOs'.'Código Ação'
+	toColumn: Ação.'Código Ação'
+
+relationship cd39543e-c35e-4896-b873-88291f0b8576
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Ação UOs'.'Código UO'
+	toColumn: 'Unidade Orçamentária'.'Código UO'
+
+relationship 5f21c3ba-a994-420a-93ec-45fe372f9d09
+	fromColumn: 'Ação Apuração'.'Código Ação'
+	toColumn: Ação.'Código Ação'
+
+relationship 4cdde7f3-a8ef-4d3f-b141-7e27e8e18ad5
+	fromColumn: 'Unidade Administrativa'.'Código UO'
+	toColumn: 'Unidade Orçamentária'.'Código UO'
+
+relationship 85362f2c-64fe-41c1-8787-dce592c630c7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Ação Apuração Detalhada'.'Mês Apuração'
+	toColumn: LocalDateTable_2df8d37c-62f8-47b1-8c31-603364a34f44.Date
+
+relationship 0e96df52-78a5-44b6-9389-90e44b1e0b15
+	fromColumn: 'Ação Apuração Detalhada'.'Código UO'
+	toColumn: 'Unidade Orçamentária'.'Código UO'
+
+relationship 4fd3be3b-fd4a-435e-a432-fd18a1f35b7f
+	fromColumn: 'Ação Apuração Detalhada'.'Código Ação'
+	toColumn: Ação.'Código Ação'
+
+relationship e48a8a0d-ee04-46af-b466-3a4756b91b0c
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Ação Apuração Detalhada'.'Código Categoria'
+	toColumn: 'Despesa Categoria'.'Código Categoria'
+
+relationship 919e79e4-52a5-4a64-9325-018483f2211e
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Ação Apuração Detalhada'.'Código Grupo'
+	toColumn: 'Despesa Grupo'.'Código Grupo'
+
+relationship 79252092-97cf-4de2-a41b-8d7d94980bab
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Ação Apuração Detalhada'.'Código Elemento'
+	toColumn: 'Despesa Elemento'.'Código Elemento'
+
+relationship 0f84a559-2196-4b70-b30a-b263aaff6d7b
+	fromColumn: 'Produto ODS'.'Código ODS'
+	toColumn: ODS.'Código ODS'
+
+relationship 0aae2028-b15e-423d-8ac9-aaa430d526ed
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Última Atualização dos Dados'.data
+	toColumn: LocalDateTable_056d6a3a-8d0a-46a0-9557-50b161dde78c.Date
+
+relationship AutoDetected_e8bbee39-591c-44b6-a895-dee1b71b21e0
+	fromColumn: 'Ação Apuração Detalhada'.'Código Órgão'
+	toColumn: Órgão.'Código Órgão'
+

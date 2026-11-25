@@ -1,0 +1,384 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "9156c46f0c822d201607",
+  "position": {
+    "x": 0,
+    "y": 111.67785234899327,
+    "z": 5000,
+    "height": 370.82774049217,
+    "width": 1156.8680089485458,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Ação Apuração Detalhada"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Mês Apuração"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Mês"
+                }
+              },
+              "queryRef": "Ação Apuração Detalhada.Mês Apuração.Variation.Hierarquia de datas.Mês",
+              "nativeQueryRef": "Mês Apuração Mês",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Unidade Orçamentária"
+                    }
+                  },
+                  "Property": "UO Descritiva"
+                }
+              },
+              "queryRef": "Unidade Orçamentária.UO Descritiva",
+              "nativeQueryRef": "Dotação e Execução Orçamentária",
+              "active": true,
+              "displayName": "Dotação e Execução Orçamentária"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Despesa Categoria"
+                    }
+                  },
+                  "Property": "Categoria Descritiva"
+                }
+              },
+              "queryRef": "Despesa Categoria.Categoria Descritiva",
+              "nativeQueryRef": "Categoria",
+              "active": true,
+              "displayName": "Categoria"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Despesa Grupo"
+                    }
+                  },
+                  "Property": "Grupo Descritivo"
+                }
+              },
+              "queryRef": "Despesa Grupo.Grupo Descritivo",
+              "nativeQueryRef": "Grupo",
+              "active": true,
+              "displayName": "Grupo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Despesa Elemento"
+                    }
+                  },
+                  "Property": "Elemento Descritivo"
+                }
+              },
+              "queryRef": "Despesa Elemento.Elemento Descritivo",
+              "nativeQueryRef": "Elemento",
+              "active": true,
+              "displayName": "Elemento"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Ação Apuração Detalhada"
+                        }
+                      },
+                      "Property": "Dotação no Mês"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Ação Apuração Detalhada.Dotação no Mês)",
+              "nativeQueryRef": "Dotação",
+              "displayName": "Dotação"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Ação Apuração Detalhada"
+                        }
+                      },
+                      "Property": "Liquidação Acumulada no Ano"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Ação Apuração Detalhada.Liquidação Acumulada no Ano)",
+              "nativeQueryRef": "Liquidação Acumulada",
+              "displayName": "Liquidação Acumulada"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Unidade Orçamentária.UO Descritiva"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Despesa Categoria.Categoria Descritiva"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Despesa Grupo.Grupo Descritivo"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Despesa Elemento.Elemento Descritivo"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "139.78208886792538D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "LocalDateTable_2df8d37c-62f8-47b1-8c31-603364a34f44"
+                          }
+                        },
+                        "Property": "Mês"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'janeiro'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "Sum(Ação Apuração Detalhada.Liquidação Acumulada no Ano)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "512.5917215428034D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Unidade Orçamentária.UO Descritiva"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "LocalDateTable_2df8d37c-62f8-47b1-8c31-603364a34f44"
+                          }
+                        },
+                        "Property": "Mês"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'fevereiro'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "Sum(Ação Apuração Detalhada.Liquidação Acumulada no Ano)"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "titleAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dotação Detalhada'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "b51e8862b17e120621de",
+  "isHidden": true
+}

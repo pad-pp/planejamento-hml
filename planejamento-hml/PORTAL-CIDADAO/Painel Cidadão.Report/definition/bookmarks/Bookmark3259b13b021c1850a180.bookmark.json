@@ -1,0 +1,223 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Ficha Previsão Investimento",
+  "name": "Bookmark3259b13b021c1850a180",
+  "options": {
+    "targetVisualNames": [
+      "85dc50453e3983796996",
+      "cd2d0b5000d695606592",
+      "50fad11e5db8b063c674",
+      "6b313895212d03ea0a30",
+      "1f2a421b087cb08e273d",
+      "8d8cba6b32ab2d6506c3",
+      "8d58761492095500476c",
+      "3095ed2009e29b38c0a4",
+      "937e7f09a99746050902"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSectiona2a53ec3ab88d8030093",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "Filter2b5e979a58a945e82045",
+          "type": "Categorical",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "p",
+                "Entity": "Programa",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "p"
+                                }
+                              },
+                              "Property": "Código Programa"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "null"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "Programa"
+                }
+              },
+              "Property": "Código Programa"
+            }
+          },
+          "howCreated": 1
+        },
+        {
+          "name": "Filtera603cf19c009f47f3f99",
+          "type": "Categorical",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "m",
+                "Entity": "Meses PPA",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "m"
+                                }
+                              },
+                              "Property": "Ano"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "null"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "HierarchyLevel": {
+              "Expression": {
+                "Hierarchy": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Meses PPA"
+                    }
+                  },
+                  "Hierarchy": "Mês Hierarchy"
+                }
+              },
+              "Level": "Ano"
+            }
+          },
+          "howCreated": 1,
+          "cachedDisplayNames": [
+            {
+              "id": {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Meses PPA"
+                          }
+                        },
+                        "Property": "Ano"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "null"
+                      }
+                    }
+                  }
+                }
+              },
+              "displayName": "(Blank)"
+            }
+          ]
+        }
+      ]
+    },
+    "sections": {
+      "ReportSectiona2a53ec3ab88d8030093": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "3bd655e49611e3697421": {
+            "isHidden": true,
+            "children": {
+              "ac9e95b10e0234501445": {
+                "isHidden": false
+              }
+            }
+          },
+          "101b51d30011c521a63d": {
+            "isHidden": true
+          },
+          "1e48d4b7caf3cc87a0f4": {
+            "isHidden": true
+          },
+          "c296f5ec373a7520f911": {
+            "isHidden": false
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "visible": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

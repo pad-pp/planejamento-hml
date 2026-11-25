@@ -1,0 +1,274 @@
+table 'Ação Apuração'
+	lineageTag: db37de7c-d674-4567-8058-01b5ee569bab
+
+	column 'Mês Apuração'
+		dataType: dateTime
+		formatString: mmmm" de "yyyy
+		lineageTag: d3437e65-ef09-4b55-9a32-56d9203792ba
+		summarizeBy: none
+		sourceColumn: Mês Apuração
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Dotação Inicial do Ano'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 1b370905-a8a5-4cd9-a749-03d7db48f125
+		summarizeBy: sum
+		sourceColumn: Dotação Inicial do Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Dotação no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 90842f21-8c47-4733-8e92-c75bd33e01eb
+		summarizeBy: sum
+		sourceColumn: Dotação no Mês
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Dotação Inicial Acumulada no PPA'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 33a417f6-3aca-473c-abb4-7ad83c9aa68e
+		summarizeBy: sum
+		sourceColumn: Dotação Inicial Acumulada no PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Dotação Acumulada no PPA'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 39728c96-1c0a-4f13-95ea-a00f8cfb5fbf
+		summarizeBy: sum
+		sourceColumn: Dotação Acumulada no PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidação no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: f4c13f98-3e5c-4c33-a3b7-d1791d08d2c7
+		summarizeBy: sum
+		sourceColumn: Liquidação no Mês
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidação Acumulada no Ano'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 28c75a41-2d31-4742-9363-92c3fd7f8729
+		summarizeBy: sum
+		sourceColumn: Liquidação Acumulada no Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidação Acumulada no PPA'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 514a7031-9a9f-4092-ace7-689a77584483
+		summarizeBy: sum
+		sourceColumn: Liquidação Acumulada no PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidação Esperada no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 4b39d911-4d52-436f-95f4-3db49c4dc336
+		summarizeBy: sum
+		sourceColumn: Liquidação Esperada no Mês
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidação Esperada no Ano'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: e6d69e70-0340-4d3a-9e8e-399bd70da24e
+		summarizeBy: sum
+		sourceColumn: Liquidação Esperada no Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidação Esperada no PPA'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 72a95b42-9f54-4f64-9993-822e21b86195
+		summarizeBy: sum
+		sourceColumn: Liquidação Esperada no PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Custo Anual Unitário Inicial Esperado no Ano'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: d4813214-43b3-4a85-950b-33b94dc45688
+		summarizeBy: sum
+		sourceColumn: Custo Anual Unitário Inicial Esperado no Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Custo Anual Unitário Esperado no Ano'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 7921a1a1-b02e-4603-a8c4-41284f4bbd68
+		summarizeBy: sum
+		sourceColumn: Custo Anual Unitário Esperado no Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Custo Anual Unitário Apurado no Ano'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 162f1b46-d9cf-4e44-934a-b318f9e8345a
+		summarizeBy: sum
+		sourceColumn: Custo Anual Unitário Apurado no Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Liquidado no Ano / Dotação Atualizada (em %)'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e10d5f77-5ff8-48d2-97b7-839a26de97d3
+		summarizeBy: none
+		sourceColumn: Liquidado no Ano / Dotação Atualizada (em %)
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'É Última Apuração do Ano?' = 'Ação Apuração'[Mês Apuração] == CALCULATE(MAX('Ação Apuração'[Mês Apuração]), FILTER('Ação Apuração', 'Ação Apuração'[Código Ação] = EARLIER('Ação Apuração'[Código Ação])))
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fced2cbe-8f70-4f59-9b11-29d40e4e4fe2
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID Apuração' = CONCATENATE('Ação Apuração'[Código Ação], 'Ação Apuração'[Mês Apuração])
+		lineageTag: 79e1aaf4-19af-4db2-8567-5b6fc7370a22
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Ação'
+		dataType: int64
+		formatString: 0
+		lineageTag: c1f3d138-fc71-47fd-8784-594219967d4a
+		summarizeBy: none
+		sourceColumn: Código Ação
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dotação Disponível no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: fa1a6ff3-026d-4f87-ba63-c1b02ea1c24f
+		summarizeBy: sum
+		sourceColumn: Dotação Disponível no Mês
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Dotação Disponível Acumulada no PPA'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 807cde46-8bee-4fc5-ad13-26b193d20e8c
+		summarizeBy: sum
+		sourceColumn: Dotação Disponível Acumulada no PPA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Contingenciado no Mês'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 7d4024f8-6d6f-4d87-af34-4efdf6c3c3cd
+		summarizeBy: sum
+		sourceColumn: Contingenciado no Mês
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition 'Ação Apuração' = m
+		mode: import
+		source =
+				let
+				    Fonte = #"Arquivo Indicadores",
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each ([Código Produto] <> null)),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Linhas Filtradas",{"Código Ação", "Mês Apuração", "Dotação Inicial do Ano", "Dotação no Mês", "Dotação Disponível no Mês", "Dotação Inicial Acumulada no PPA", "Dotação Acumulada no PPA", "Dotação Disponível Acumulada no PPA", "Contingenciado no Mês", "Liquidação no Mês", "Liquidação Acumulada no Ano", "Liquidação Acumulada no PPA", "Liquidação Esperada no Mês", "Liquidação Esperada no Ano", "Liquidação Esperada no PPA", "Liquidado no Ano / Dotação Atualizada (em %)", "Custo Anual Unitário Inicial Esperado no Ano", "Custo Anual Unitário Esperado no Ano", "Custo Anual Unitário Apurado no Ano"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Outras Colunas Removidas", {"Código Ação", "Mês Apuração"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

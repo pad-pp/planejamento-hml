@@ -1,0 +1,345 @@
+table 'Indicador Apuração'
+	lineageTag: 92be930b-5cd2-4bfc-bdc6-2cd8f2cdfd52
+
+	column 'Código Indicador'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5befb152-5f25-41c4-a5ad-c122193499c5
+		summarizeBy: none
+		sourceColumn: Código Indicador
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meta do Ano'
+		dataType: double
+		lineageTag: f1a2b570-1f44-4315-a001-769ae55990ba
+		summarizeBy: sum
+		sourceColumn: Meta do Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Valor Apurado no Mês'
+		dataType: double
+		lineageTag: 027d656e-ab1f-4048-922f-9ad629695648
+		summarizeBy: sum
+		sourceColumn: Valor Apurado no Mês
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Comentário da Execução'
+		dataType: string
+		lineageTag: 19a5e796-fddc-4438-92e6-355b33eedc1c
+		summarizeBy: none
+		sourceColumn: Comentário da Execução
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Análise de Monitoramento'
+		dataType: string
+		lineageTag: 66b8be3e-8212-4458-8a9c-37ea213c02cd
+		summarizeBy: none
+		sourceColumn: Análise de Monitoramento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mês Apuração'
+		dataType: dateTime
+		formatString: mmmm" de "yyyy
+		lineageTag: 95df6db1-7866-474f-b1e4-8bd570039da0
+		summarizeBy: none
+		sourceColumn: Mês Apuração
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Valor Apurado Acumulado no Ano'
+		dataType: double
+		lineageTag: c65170c8-d6fc-4187-a9ef-ed0283f59b6a
+		summarizeBy: sum
+		sourceColumn: Valor Apurado Acumulado no Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Valor Apurado Acumulado no PPA'
+		dataType: double
+		lineageTag: 8978ce85-00c6-4124-968c-5a006cd007d2
+		summarizeBy: sum
+		sourceColumn: Valor Apurado Acumulado no PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Meta Esperada no Ano'
+		dataType: double
+		lineageTag: b314a991-ab29-4fb7-ae8f-f5b7e7e02a90
+		summarizeBy: sum
+		sourceColumn: Meta Esperada no Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Meta Esperada no PPA'
+		dataType: double
+		lineageTag: 1ab0baa7-585b-4ed8-8d00-d0e6480fbbde
+		summarizeBy: sum
+		sourceColumn: Meta Esperada no PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Percentual de Cumprimento Esperado da Meta do Ano'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 431298cb-8a54-44a1-8ecb-8a130120f2ec
+		summarizeBy: none
+		sourceColumn: Percentual de Cumprimento Esperado da Meta do Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Percentual de Cumprimento Esperado da Meta do PPA'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 146fc9b7-f982-47dc-b129-5c557318f84f
+		summarizeBy: none
+		sourceColumn: Percentual de Cumprimento Esperado da Meta do PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Percentual de Cumprimento da Meta do Ano'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c3913c11-fc94-4a7c-afa7-a87aa93066eb
+		summarizeBy: none
+		sourceColumn: Percentual de Cumprimento da Meta do Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Percentual de Cumprimento da Meta do PPA'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 56ace17b-2704-4bf8-9875-07c1e0ea826b
+		summarizeBy: none
+		sourceColumn: Percentual de Cumprimento da Meta do PPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Houve Apuração no Mês?'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 539dc483-3908-4ee4-a8b6-bd9192a7c6ad
+		summarizeBy: none
+		sourceColumn: Houve Apuração no Mês?
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Última Apuração Esperada' = ```
+			
+			VAR periodicidade = LOOKUPVALUE(Indicador[Periodicidade], Indicador[Código Indicador], 'Indicador Apuração'[Código Indicador])
+			VAR periodicidade_num = 
+			    SWITCH(periodicidade,
+			        "Mensal", 1,
+			        "Bimestral", 2,
+			        "Trimestral", 3,
+			        "Quadrimestral", 4,
+			        "Semestral", 6,
+			        12
+			    )
+			RETURN DATE(YEAR([Mês Apuração]), CEILING(MONTH([Mês Apuração]) / periodicidade_num, 1) * periodicidade_num, 1)
+			```
+		formatString: mmmm" de "yyyy
+		lineageTag: 582b89bf-557a-4ad1-8c5f-0ee514b18caf
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: af52f5d8-050b-487f-82e0-a62862483b8b
+			defaultHierarchy: LocalDateTable_ff886ec6-5530-46a4-bf36-cf3660e514ff.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Indicador Descontinuado?' =
+			NOT(ISBLANK(
+			    CALCULATE(
+			        MAX('Indicador Descontinuado'[Fim]),
+			        FILTER(
+			            'Indicador Descontinuado',
+			            'Indicador Descontinuado'[Código Indicador] = 'Indicador Apuração'[Código Indicador]
+			                && 'Indicador Descontinuado'[Início] <= 'Indicador Apuração'[Mês Apuração]
+			                && 'Indicador Descontinuado'[Fim] >= 'Indicador Apuração'[Mês Apuração]
+			        )
+			    )
+			))
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d3701171-c5dd-466f-9a8f-fccbe6efcb28
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'É Último Mês de Apuração?' = 'Indicador Apuração'[Mês Apuração] = MAX('Indicador Apuração'[Mês Apuração])
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 003129e8-3249-4b54-9d10-db14a56e6888
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'É Última Apuração do Ano?' = 'Indicador Apuração'[Mês Apuração] == CALCULATE(MAX('Indicador Apuração'[Mês Apuração]), ALLEXCEPT('Indicador Apuração', 'Indicador Apuração'[Ano Apuração]))
+		lineageTag: cc6a209e-888d-4a4e-a353-e9f9f75f6ccc
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ano Apuração' = YEAR('Indicador Apuração'[Mês Apuração])
+		formatString: 0
+		lineageTag: f0b323d9-c355-453f-9301-42edf5044e11
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% Ajustado Cumprimento da Meta do Ano' = IF('Indicador Apuração'[Percentual de Cumprimento da Meta do Ano] > 3, 3, 'Indicador Apuração'[Percentual de Cumprimento da Meta do Ano])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1162b8d2-c417-48b8-9d8e-a6dbcf1ca600
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Apuração Não Realizada Indevidamente' = AND(NOT('Indicador Apuração'[Indicador Descontinuado?]), AND(NOT('Indicador Apuração'[Houve Apuração no Mês?]), 'Indicador Apuração'[Última Apuração Esperada] = 'Indicador Apuração'[Mês Apuração]))
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 444e4151-7667-41f4-afca-2a2639c4ac1e
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Liquidado no Ano / Dotação Atualizada (em %)'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a865f30c-27f0-44d2-b987-372302f2ce61
+		summarizeBy: none
+		sourceColumn: Liquidado no Ano / Dotação Atualizada (em %)
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Apuração Física / Execução Orçamentária' = IF(ISBLANK('Indicador Apuração'[Liquidado no Ano / Dotação Atualizada (em %)]), 'Indicador Apuração'[Liquidado no Ano / Dotação Atualizada (em %)], IF('Indicador Apuração'[Percentual de Cumprimento da Meta do Ano]/'Indicador Apuração'[Liquidado no Ano / Dotação Atualizada (em %)] > 10, 10, 'Indicador Apuração'[Percentual de Cumprimento da Meta do Ano]/'Indicador Apuração'[Liquidado no Ano / Dotação Atualizada (em %)]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d8dbef81-14b8-4612-b9bf-c0041c646a9f
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Código Produto'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3744d7e8-c317-48cf-ab10-b0be5db4d23e
+		summarizeBy: none
+		sourceColumn: Código Produto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'ID Apuração' = CONCATENATE('Indicador Apuração'[Código Produto], 'Indicador Apuração'[Mês Apuração])
+		lineageTag: 0f7b38d1-ad36-4e07-9e43-19f312999374
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Índice de Defasagem de Apuração Física' = ABS('Indicador Apuração'[Percentual de Cumprimento da Meta do Ano]-'Indicador Apuração'[Percentual de Cumprimento Esperado da Meta do Ano])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9904627d-301f-4a0c-b3a4-5b320133809e
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resultado do Ano Satisfatório?' =
+			ISBLANK('Indicador Apuração'[Meta Esperada no Ano]) || ('Indicador Apuração'[Percentual de Cumprimento da Meta do Ano] > _Medidas[Percentual Mínimo de Execução de Meta Física]
+			        && 'Indicador Apuração'[Percentual de Cumprimento da Meta do Ano] < _Medidas[Percentual Máximo de Execução de Meta Física])
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 59d4af08-c38d-4e6b-832b-0102dc653bf5
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Indicador Apuração' = m
+		mode: import
+		source =
+				let
+				    Source = #"Arquivo Indicadores",
+				    #"Valor Substituído" = Table.ReplaceValue(Source,each [Tipo de Indicador] <> "LOA", null, (x,y,z)=> if y then z else x, {"Dotação Inicial do Ano", "Dotação no Mês", "Dotação Inicial Acumulada no PPA", "Dotação Acumulada no PPA", "Liquidação no Mês", "Liquidação Acumulada no Ano", "Liquidação Acumulada no PPA", "Liquidação Esperada no Mês", "Liquidação Esperada no Ano", "Liquidação Esperada no PPA", "Custo Anual Unitário Inicial Esperado no Ano", "Custo Anual Unitário Esperado no Ano", "Custo Anual Unitário Apurado no Ano", "Liquidado no Ano / Dotação Atualizada (em %)"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Valor Substituído",{{"Custo Anual Unitário Apurado no Ano", Currency.Type}, {"Custo Anual Unitário Esperado no Ano", Currency.Type}, {"Custo Anual Unitário Inicial Esperado no Ano", Currency.Type}, {"Liquidação Esperada no PPA", Currency.Type}, {"Liquidação Esperada no Ano", Currency.Type}, {"Liquidação Esperada no Mês", Currency.Type}, {"Liquidação Acumulada no PPA", Currency.Type}, {"Liquidação Acumulada no Ano", Currency.Type}, {"Liquidação no Mês", Currency.Type}, {"Dotação Acumulada no PPA", Currency.Type}, {"Dotação Inicial Acumulada no PPA", Currency.Type}, {"Dotação no Mês", Currency.Type}, {"Dotação Inicial do Ano", Currency.Type}, {"Liquidado no Ano / Dotação Atualizada (em %)", Percentage.Type}}),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Tipo Alterado",{"Código Indicador", "Código Produto", "Meta do Ano", "Valor Apurado no Mês", "Comentário da Execução", "Análise de Monitoramento", "Mês Apuração", "Valor Apurado Acumulado no Ano", "Valor Apurado Acumulado no PPA", "Meta Esperada no Ano", "Meta Esperada no PPA", "Percentual de Cumprimento Esperado da Meta do Ano", "Percentual de Cumprimento Esperado da Meta do PPA", "Percentual de Cumprimento da Meta do Ano", "Percentual de Cumprimento da Meta do PPA", "Liquidado no Ano / Dotação Atualizada (em %)", "Houve Apuração no Mês?"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Outras Colunas Removidas", each ([Mês Apuração] <> null)),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Linhas Filtradas", {"Código Indicador", "Mês Apuração"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

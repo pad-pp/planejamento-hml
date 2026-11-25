@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Painel Cidadão"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "497936c3-f17e-bdd2-4826-5eed407408f8"
+  }
+}

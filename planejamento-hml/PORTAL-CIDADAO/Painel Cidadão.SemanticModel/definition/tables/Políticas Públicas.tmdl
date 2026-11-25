@@ -1,0 +1,52 @@
+table 'Políticas Públicas'
+	lineageTag: ace829bf-7332-48cf-9f9d-25962a522326
+
+	column 'Código Produto'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c9ec80a-3534-4ebf-ba04-1eefd93016a0
+		summarizeBy: none
+		sourceColumn: Código Produto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Política Pública'
+		dataType: string
+		lineageTag: 4322a63c-9780-45f0-90cf-9d01366f4f91
+		summarizeBy: none
+		sourceColumn: Política Pública
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Política Pública Descrição'
+		dataType: string
+		lineageTag: 82e5fb5c-1e83-43a9-adea-bac2316dcc53
+		summarizeBy: none
+		sourceColumn: Política Pública Descrição
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Políticas Públicas-d77746c1-ea77-4307-a11b-f3b67437afbb' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/politicas.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Ano", Int64.Type}, {"Código Produto", Int64.Type}, {"Política Pública", type text}, {"Política Pública Descrição", type text}}),
+				    #"Linhas Agrupadas" = Table.Group(#"Changed Type", {"Código Produto"}, {{"Resto", each _, type table [Ano=nullable number, Código Produto=nullable number, Política Pública=nullable text, Política Pública Descrição=nullable text]}, {"Max Ano", each List.Max([Ano]), type nullable number}}),
+				    #"Resto Expandido" = Table.ExpandTableColumn(#"Linhas Agrupadas", "Resto", {"Ano", "Política Pública", "Política Pública Descrição"}, {"Ano", "Política Pública", "Política Pública Descrição"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Resto Expandido", each ([Ano] = [Max Ano])),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Linhas Filtradas",{"Ano", "Max Ano"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

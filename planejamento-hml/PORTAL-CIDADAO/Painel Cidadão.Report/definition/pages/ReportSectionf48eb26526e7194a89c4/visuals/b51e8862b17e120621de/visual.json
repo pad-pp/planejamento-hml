@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "b51e8862b17e120621de",
+  "position": {
+    "x": 65.861297539149888,
+    "y": 150.33557046979865,
+    "z": 5000,
+    "height": 482.50559284116332,
+    "width": 1156.8680089485458,
+    "tabOrder": 15001
+  },
+  "visualGroup": {
+    "displayName": "Ficha Exec Detalhada",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

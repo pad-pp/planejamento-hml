@@ -1,0 +1,91 @@
+table 'Indicador Histórico Metas'
+	lineageTag: 3596371c-5105-4973-81a1-9533f52fb361
+
+	column 'Código Indicador'
+		dataType: int64
+		formatString: 0
+		lineageTag: 171df4a2-8ce7-4027-9ad7-a6f9b901784d
+		summarizeBy: none
+		sourceColumn: Código Indicador
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e87eff3-c1b2-4579-a944-18d959622290
+		summarizeBy: none
+		sourceColumn: Ano
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Código Fase'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b84b525-ceb0-4ea8-ae0c-5b9c7b6a6dd0
+		summarizeBy: none
+		sourceColumn: Código Fase
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Sigla Fase'
+		dataType: string
+		lineageTag: 9035f5ad-1f5e-4518-97c2-a6cd19b3c5ec
+		summarizeBy: none
+		sourceColumn: Sigla Fase
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meta
+		dataType: double
+		lineageTag: 05f932ce-f90c-4acd-986d-e8506a01a812
+		summarizeBy: none
+		sourceColumn: Meta
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tipo Meta'
+		dataType: string
+		lineageTag: 79a774b2-613c-4b00-b536-75aa46fc8dcd
+		summarizeBy: none
+		sourceColumn: Tipo Meta
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meta Atual do Tipo' = 'Indicador Histórico Metas'[Código Fase] == CALCULATE(MAX('Indicador Histórico Metas'[Código Fase]), ALLEXCEPT('Indicador Histórico Metas', 'Indicador Histórico Metas'[Código Indicador], 'Indicador Histórico Metas'[Ano], 'Indicador Histórico Metas'[Tipo Meta]))
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6d09ffbe-c551-4baa-8066-af88090dee6f
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Indicador Histórico Metas' = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.Combine({indicadores_anual_hist, indicadores_ppa_hist}),
+				    #"Valor Substituído" = Table.ReplaceValue(Fonte,"LPPA","PPA",Replacer.ReplaceText,{"Sigla Fase"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","RPPA","Revisão PPA",Replacer.ReplaceText,{"Sigla Fase"})
+				in
+				    #"Valor Substituído1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

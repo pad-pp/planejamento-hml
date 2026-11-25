@@ -1,0 +1,136 @@
+table 'Unidade Administrativa'
+	excludeFromModelRefresh
+	lineageTag: 81ec5ba5-c563-4e15-ae01-9e6e6148fc1d
+
+	column Órgão
+		dataType: string
+		lineageTag: 30d22f53-9fd5-4266-87f4-f01cf15b9161
+		summarizeBy: none
+		sourceColumn: Órgão
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código UO'
+		dataType: int64
+		formatString: 0
+		lineageTag: 51ed6546-72b5-40c1-a098-cfe6e0869dfc
+		summarizeBy: none
+		sourceColumn: Código UO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome UO'
+		dataType: string
+		lineageTag: e9fbc6ff-6671-4a9a-b1f8-7b3c101b34f1
+		summarizeBy: none
+		sourceColumn: Nome UO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unidade Gestora'
+		dataType: string
+		lineageTag: de4db102-a5af-4ad8-ba9d-774b85018054
+		summarizeBy: none
+		sourceColumn: Unidade Gestora
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unidade Administrativa'
+		dataType: string
+		lineageTag: b416bc96-707c-4aae-9d40-5d2a83284ea6
+		summarizeBy: none
+		sourceColumn: Unidade Administrativa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nível
+		dataType: string
+		lineageTag: de03576d-b959-4da8-9baf-6c2be24f7b08
+		summarizeBy: none
+		sourceColumn: Nível
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo Administração'
+		dataType: string
+		lineageTag: daab3e61-bdba-41e5-bf09-3fa3790fa419
+		summarizeBy: none
+		sourceColumn: Tipo Administração
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Poder
+		dataType: string
+		lineageTag: a3b29058-e2d3-44ce-b520-928fc6cb4776
+		summarizeBy: none
+		sourceColumn: Poder
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Município'
+		dataType: string
+		lineageTag: f6bf8bf0-ba7b-4740-8ed2-f74ad5c02d6d
+		summarizeBy: none
+		sourceColumn: Código Município
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Município'
+		dataType: string
+		lineageTag: db17087f-6234-4d46-a3a1-fa6b3389d5a4
+		summarizeBy: none
+		sourceColumn: Nome Município
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: bc8a1f20-ab31-4eb2-ba88-a47ae67baa34
+		summarizeBy: none
+		sourceColumn: Status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Unidade Administrativa-aec70f44-a60a-48ce-a644-d4c9703d9880' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202020-2023/Dados/Dados_UA.xlsx"), null, true),
+				    Sheet1_Sheet = Fonte{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Linhas Superiores Removidas" = Table.Skip(Sheet1_Sheet,2),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Linhas Superiores Removidas", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Órgão", type text}, {"Unidade Orçamentária", type text}, {"Unidade Gestora", type text}, {"Unidade Administrativa", type text}, {"Nível", type text}, {"Tipo Administração", type text}, {"Poder", type text}, {"Município", type text}, {"Status", type text}}),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(#"Tipo Alterado", "Unidade Orçamentária", Splitter.SplitTextByDelimiter(" - ", QuoteStyle.Csv), {"Unidade Orçamentária.1", "Unidade Orçamentária.2"}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"Unidade Orçamentária.1", Int64.Type}, {"Unidade Orçamentária.2", type text}}),
+				    #"Dividir Coluna por Delimitador1" = Table.SplitColumn(#"Tipo Alterado1", "Município", Splitter.SplitTextByDelimiter(" - ", QuoteStyle.Csv), {"Município.1", "Município.2"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Dividir Coluna por Delimitador1",{{"Unidade Orçamentária.1", "Código UO"}, {"Unidade Orçamentária.2", "Nome UO"}, {"Município.1", "Código Município"}, {"Município.2", "Nome Município"}}),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Colunas Renomeadas",{{"Nome Município", Text.Upper, type text}})
+				in
+				    #"Texto em Maiúscula"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,52 @@
+table 'Órgão Executor Programa'
+	lineageTag: 86c53689-702b-4049-adc8-0f08639cf485
+
+	column 'Código Programa'
+		dataType: int64
+		formatString: 0
+		lineageTag: 66e20599-4a99-4008-95f8-92da5f571163
+		summarizeBy: none
+		sourceColumn: Código Programa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Órgão'
+		dataType: double
+		lineageTag: d6b86ace-06a2-461f-9f6b-1dfb561796ec
+		summarizeBy: sum
+		sourceColumn: Código Órgão
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Órgão Executor' = LOOKUPVALUE('Órgão'[Nome Órgão Simplificado], 'Órgão'[Código Órgão], [Código Órgão])
+		lineageTag: cc9948ff-96f7-4314-a67b-00377cc376be
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Órgão Executor Programa-cb52d7b7-684a-4174-b2d2-a93f5024d3a4' = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/programa_orgaos.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Ano", Int64.Type}, {"Código Programa", Int64.Type}, {"Código Órgão", Int64.Type}}),
+				    #"Linhas Agrupadas" = Table.Group(#"Tipo Alterado", {"Código Programa"}, {{"Todo o Resto", each _, type table [Ano=nullable number, Código Programa=nullable number, Código Órgão=nullable number]}, {"Max Ano", each List.Max([Ano]), type nullable number}}),
+				    #"Todo o Resto Expandido" = Table.ExpandTableColumn(#"Linhas Agrupadas", "Todo o Resto", {"Ano", "Código Órgão"}, {"Ano", "Código Órgão"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Todo o Resto Expandido", each ([Ano] = [Max Ano])),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Linhas Filtradas",{"Ano", "Max Ano"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

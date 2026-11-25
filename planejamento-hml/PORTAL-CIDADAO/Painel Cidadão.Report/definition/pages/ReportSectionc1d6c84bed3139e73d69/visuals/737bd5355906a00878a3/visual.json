@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "737bd5355906a00878a3",
+  "position": {
+    "x": 61.127029608404968,
+    "y": 244.50811843361987,
+    "z": 9062,
+    "height": 388.76790830945549,
+    "width": 1165.1783891108071,
+    "tabOrder": 12000
+  },
+  "visualGroup": {
+    "displayName": "Ficha Exec Orçamentária",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

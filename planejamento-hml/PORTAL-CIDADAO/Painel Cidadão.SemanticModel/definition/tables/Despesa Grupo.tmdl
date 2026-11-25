@@ -1,0 +1,49 @@
+table 'Despesa Grupo'
+	excludeFromModelRefresh
+	lineageTag: 520407e7-609c-4a33-9b1b-777d66cfeee4
+
+	column 'Código Grupo'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6105519a-d11f-4775-89dc-1d6085f43889
+		summarizeBy: none
+		sourceColumn: Código Grupo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Descrição Grupo'
+		dataType: string
+		lineageTag: 2a7aec91-b059-4269-9c0c-532a462e7dfc
+		summarizeBy: none
+		sourceColumn: Descrição Grupo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grupo Descritivo' = CONCATENATE('Despesa Grupo'[Código Grupo], CONCATENATE(" - ", 'Despesa Grupo'[Descrição Grupo]))
+		lineageTag: 39729201-5ea6-4dd8-9542-fc511959e741
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Despesa Grupo' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/cad_grupo.xlsx"), null, true),
+				    cad_grupo_Sheet = Source{[Item="cad_grupo",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(cad_grupo_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Código Grupo", Int64.Type}, {"Descrição Grupo", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([Código Grupo] <> null))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

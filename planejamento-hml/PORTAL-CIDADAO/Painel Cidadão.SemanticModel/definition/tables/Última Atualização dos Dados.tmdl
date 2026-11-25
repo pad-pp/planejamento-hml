@@ -1,0 +1,30 @@
+table 'Última Atualização dos Dados'
+	lineageTag: 8f517d63-b89a-46a8-9909-ebc57a015501
+
+	column data
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a1e71130-2fe7-4cd0-97ef-3f5823b0530f
+		summarizeBy: none
+		sourceColumn: data
+
+		variation Variation
+			isDefault
+			relationship: 0aae2028-b15e-423d-8ac9-aaa430d526ed
+			defaultHierarchy: LocalDateTable_056d6a3a-8d0a-46a0-9557-50b161dde78c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Última Atualização dos Dados' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("6wulhtcapyqe5g3tfjv5bptbuq-opuyt6vmlbne7dponfisybylqa.datawarehouse.fabric.microsoft.com", "PAD_PP_MODELO_SEMANTICO"),
+				    dbo_data_de_atualizacao = Fonte{[Schema="dbo",Item="data_de_atualizacao"]}[Data]
+				in
+				    dbo_data_de_atualizacao
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+

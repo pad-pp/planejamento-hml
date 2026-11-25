@@ -1,0 +1,49 @@
+table 'Despesa Categoria'
+	excludeFromModelRefresh
+	lineageTag: 9b0d5ae3-dfcb-457d-ab30-69774e710f64
+
+	column 'Código Categoria'
+		dataType: int64
+		formatString: 0
+		lineageTag: 994afa5d-3134-448c-837d-e66108748912
+		summarizeBy: none
+		sourceColumn: Código Categoria
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Descrição Categoria'
+		dataType: string
+		lineageTag: 31bf5625-6ff6-46ae-8a91-dcd222ff2e2a
+		summarizeBy: none
+		sourceColumn: Descrição Categoria
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Categoria Descritiva' = CONCATENATE('Despesa Categoria'[Código Categoria], CONCATENATE(" - ", 'Despesa Categoria'[Descrição Categoria]))
+		lineageTag: 31f1d1f7-86ab-4b05-a6fc-ca1f37d422ad
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Despesa Categoria' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/cad_categoria.xlsx"), null, true),
+				    cad_categoria_Sheet = Source{[Item="cad_categoria",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(cad_categoria_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Código Categoria", Int64.Type}, {"Descrição Categoria", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([Código Categoria] <> null))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

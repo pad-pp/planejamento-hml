@@ -1,0 +1,64 @@
+table 'Indicador Descontinuado'
+	lineageTag: c48a67fc-9c1b-45d1-ab2f-b5e511615e70
+
+	column 'Código Indicador'
+		dataType: int64
+		formatString: 0
+		lineageTag: 015cac41-0a68-4697-860f-c54a1b797fad
+		summarizeBy: none
+		sourceColumn: Código Indicador
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Início
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 540e88a9-e106-4144-8b9d-ca2263dab763
+		summarizeBy: none
+		sourceColumn: Início
+
+		variation Variation
+			isDefault
+			relationship: dfada4dd-9b64-47b0-9c74-5c84303458e3
+			defaultHierarchy: LocalDateTable_7b447ee4-e2d9-468e-872b-ed27ade5c846.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Fim
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e9bb3ba2-e96d-40d0-af9f-36f1ebe9bc26
+		summarizeBy: none
+		sourceColumn: Fim
+
+		variation Variation
+			isDefault
+			relationship: 48e7b68b-6a9a-4ed8-ad5a-a6af8b8c259a
+			defaultHierarchy: LocalDateTable_5be2fa13-eec2-484c-962d-2815dfd1b59e.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Indicador Descontinuado' = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/indic_descontinuados.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código Indicador", Int64.Type}, {"Início", type date}, {"Fim", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

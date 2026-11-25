@@ -1,0 +1,164 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSection0eb478ed2b637e65a207",
+  "displayName": "Programa",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4bba0cfca227a4c1aaf3",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Programa"
+              }
+            },
+            "Property": "Código e Nome Programa"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "p",
+              "Entity": "Programa",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "p"
+                          }
+                        },
+                        "Property": "Código e Nome Programa"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'946 - INOVAÇÃO, PESQUISA CIENTÍFICA, PRODUÇÃO E FORNECIMENTO DE INSUMOS ESTRATÉGICOS'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filtera0ec04b8e69c09195322",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Programa"
+              }
+            },
+            "Property": "Código Programa"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  },
+  "pageBinding": {
+    "name": "Pod1",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "647d5fa00f763ca122ec",
+        "boundFilter": "4bba0cfca227a4c1aaf3",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Programa"
+              }
+            },
+            "Property": "Código e Nome Programa"
+          }
+        }
+      }
+    ],
+    "referenceScope": "CrossReport",
+    "acceptsFilterContext": "None"
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "201L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "d4463721f8457945a66d",
+      "target": "4d3b863ffd9033708b69",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d4463721f8457945a66d",
+      "target": "f2c56baf839ffc91743c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d4463721f8457945a66d",
+      "target": "bdb87891a5214a24c181",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d4463721f8457945a66d",
+      "target": "2b9ab3513070525ce83b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d4463721f8457945a66d",
+      "target": "d13fa6f986bfa3b99589",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d4463721f8457945a66d",
+      "target": "26a57e7b91e662fabd3b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "4d3b863ffd9033708b69",
+      "target": "d4463721f8457945a66d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6a7d17df568d5b40da08",
+      "target": "98613c6192a7c24b2820",
+      "type": "NoFilter"
+    }
+  ]
+}

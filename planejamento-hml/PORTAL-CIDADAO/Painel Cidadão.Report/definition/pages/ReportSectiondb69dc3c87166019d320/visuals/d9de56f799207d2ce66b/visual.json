@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "d9de56f799207d2ce66b",
+  "position": {
+    "x": 482.23255813953489,
+    "y": 508.031007751938,
+    "z": 15750,
+    "height": 178.6046511627907,
+    "width": 315.53488372093022,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indicador Histórico Metas"
+                    }
+                  },
+                  "Property": "Tipo Meta"
+                }
+              },
+              "queryRef": "Indicador Histórico Metas.Tipo Meta",
+              "nativeQueryRef": "Tipo Meta"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indicador Histórico Metas"
+                    }
+                  },
+                  "Property": "Ano"
+                }
+              },
+              "queryRef": "Indicador Histórico Metas.Ano",
+              "nativeQueryRef": "Ano"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indicador Histórico Metas"
+                    }
+                  },
+                  "Property": "Sigla Fase"
+                }
+              },
+              "queryRef": "Indicador Histórico Metas.Sigla Fase",
+              "nativeQueryRef": "Norma",
+              "displayName": "Norma"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indicador Histórico Metas"
+                    }
+                  },
+                  "Property": "Meta"
+                }
+              },
+              "queryRef": "Indicador Histórico Metas.Meta",
+              "nativeQueryRef": "Meta"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Histórico de Metas'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

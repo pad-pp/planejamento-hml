@@ -1,0 +1,40 @@
+table 'Ação UOs'
+	lineageTag: 754f9159-cdb1-4d24-9c2c-caadd794509c
+
+	column 'Código Ação'
+		dataType: int64
+		formatString: 0
+		lineageTag: f025b855-a6ef-4e35-ba99-25deb60d366a
+		summarizeBy: none
+		sourceColumn: Código Ação
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código UO'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d16d6b7-b263-4506-a7a5-81c76a25d135
+		summarizeBy: none
+		sourceColumn: Código UO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Ação UOs' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://fazendaspgovbr.sharepoint.com/sites/SubPlan-PlanoPlurianual/Documentos%20Compartilhados/CPMRs/PowerBI/Indicadores%20Programas%20PPA%202024-2027/Dados/acoes.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Ano", Int64.Type}, {"Código Ação", Int64.Type}, {"Código Órgão", Int64.Type}, {"Código Programa", Int64.Type}, {"Código Produto", Int64.Type}, {"Denominação", type text}, {"Denominação Sucinta", type text}, {"Descrição", type text}, {"Finalidade", type text}, {"Formas de Implementação", type text}, {"Tipo de Ação", type text}, {"Código UO", Int64.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Código Ação", "Código UO"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

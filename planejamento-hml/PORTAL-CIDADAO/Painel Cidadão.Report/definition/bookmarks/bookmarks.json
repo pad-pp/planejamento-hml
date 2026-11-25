@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "Bookmark6e3e6b9c459f64b248cb",
+      "displayName": "Página Principal",
+      "children": [
+        "Bookmarkba1a300e41250331cfe8",
+        "Bookmark40a45e1d2fe22882167e",
+        "Bookmarke2f955e70cd8a2add8d1"
+      ]
+    },
+    {
+      "name": "Bookmarkb282fdd9eb853a35ecc4",
+      "displayName": "Página Busca Indicadores",
+      "children": [
+        "Bookmarke8f905cb884b3dd8c446"
+      ]
+    },
+    {
+      "name": "Bookmark65b47febee26c8af08a4",
+      "displayName": "Página Desempenho Programas",
+      "children": [
+        "Bookmarkca96d18da507807c8667",
+        "Bookmark74a64af7d2dd9e27057f",
+        "Bookmarkc4881552c50be50e41aa"
+      ]
+    },
+    {
+      "name": "Bookmarkf62975ebdaee8f9a2b78",
+      "displayName": "Página Perfil Indicadores",
+      "children": [
+        "Bookmark7a33e17e5ec1a77b75de",
+        "Bookmark8ff4f653d6c354bae41a",
+        "Bookmark492c296762929078d94b"
+      ]
+    },
+    {
+      "name": "Bookmarkf51359d1e502d40e5ec5",
+      "displayName": "Página ieg-e",
+      "children": [
+        "Bookmark377f4f8a1844347c112a",
+        "Bookmark1cc013e393a3e3d7edd1",
+        "Bookmark562b27046b54a0ac4d36",
+        "Bookmark3259b13b021c1850a180"
+      ]
+    },
+    {
+      "name": "Bookmark71b2c39eafd6e1650f0f",
+      "displayName": "Página Programa 2032",
+      "children": [
+        "Bookmark369ed5cf55a8c6ee2fc0",
+        "Bookmark12f2161403bb467795f1",
+        "Bookmarke9027dfda8f421d2f638",
+        "Bookmarkea001cdc4e47df673b8e"
+      ]
+    },
+    {
+      "name": "Bookmark0b345c5fdc07c7cc24b3",
+      "displayName": "Página Indic Problemáticos",
+      "children": [
+        "Bookmark557dbac963524280ca51",
+        "Bookmark536bc46f464162644a02",
+        "Bookmark8db587c479b57217102d"
+      ]
+    },
+    {
+      "name": "Bookmark79a7e93171964b8cc1a7",
+      "displayName": "Página Programa",
+      "children": [
+        "Bookmarkae2f1a87c1547d27f742",
+        "Bookmarkfa9862dcd02b4b872d13",
+        "Bookmarke68512c931eaef57c086",
+        "Bookmark07cf44855b02820c9767"
+      ]
+    },
+    {
+      "name": "Bookmark2b78aa970a2a395e9ca6",
+      "displayName": "Página Produto",
+      "children": [
+        "Bookmarkf87ccd60a0d7db7793ae",
+        "Bookmark6ab9889b810551f7398a",
+        "Bookmark1a0beff8b14b8480cb5f"
+      ]
+    },
+    {
+      "name": "Bookmarka14c3ab660d033a06972",
+      "displayName": "Página Ação",
+      "children": [
+        "Bookmarke5deab8bc00ac433430d",
+        "Bookmark9f3e7234a24949747c46",
+        "Bookmark4f57b0b001219abe88b0"
+      ]
+    },
+    {
+      "name": "Bookmark7f9bbe8339342e7eac0e",
+      "displayName": "Página Indicador",
+      "children": [
+        "Bookmarkc3d32d8cb65c66b74dc4",
+        "Bookmarkd8d68292532712c43e4b"
+      ]
+    }
+  ]
+}

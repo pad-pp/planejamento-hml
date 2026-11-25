@@ -1,0 +1,88 @@
+table 'Unidade Orçamentária'
+	excludeFromModelRefresh
+	lineageTag: 69239691-9eef-4419-a165-89cfcf5771f5
+
+	column Órgão
+		dataType: string
+		lineageTag: 4bf494b5-ea60-4fec-ba81-462b275110ed
+		summarizeBy: none
+		sourceColumn: Órgão
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código UO'
+		dataType: int64
+		formatString: 0
+		lineageTag: f3f95988-fc00-4d05-b078-ad1313b123f9
+		summarizeBy: none
+		sourceColumn: Código UO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome UO'
+		dataType: string
+		lineageTag: e2e9daba-ca4a-4bbc-9cb3-684ded006d39
+		summarizeBy: none
+		sourceColumn: Nome UO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo Administração'
+		dataType: string
+		lineageTag: 841ea780-ae98-45d9-975d-a6bc1fbeb4fd
+		summarizeBy: none
+		sourceColumn: Tipo Administração
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Poder
+		dataType: string
+		lineageTag: f547e016-1c12-4df0-9022-4d95a6768e55
+		summarizeBy: none
+		sourceColumn: Poder
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 6f5e1fce-e54e-43b9-9920-6dbc18505a04
+		summarizeBy: none
+		sourceColumn: Status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'UO Descritiva' = CONCATENATE(RIGHT("00000" & 'Unidade Orçamentária'[Código UO], 5), CONCATENATE(" - ", 'Unidade Orçamentária'[Nome UO]))
+		lineageTag: 686e199c-118a-413b-82b5-c6cdfe8831a9
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Unidade Orçamentária' = m
+		mode: import
+		source =
+				let
+				    Source = #"Unidade Administrativa",
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Nível] = "UO")),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Unidade Administrativa", "Nível", "Unidade Gestora", "Código Município", "Nome Município"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Columns", {"Código UO"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
