@@ -23,7 +23,7 @@
 
 CREATE OR ALTER VIEW dbo.v_orgao AS
 SELECT
-    codigo_orgao || ' - ' || NOME AS [Código e Nome Órgão]
+    codigo_orgao || ' - ' || nome AS [Código e Nome Órgão]
     ,codigo_orgao AS [Código Órgão]
     ,nome AS [Nome Órgão]
     ,nome_simplificado AS [Nome Órgão Simplificado]
@@ -70,8 +70,15 @@ SELECT
   ,i.nome             	        AS [Nome Indicador]
   ,i.unidade_de_medida   	      AS [Unidade de Medida]
   ,i.tipo 		    	            AS [Tipo de Indicador]
-  ,i.polaridade			            AS [Polaridade]
-  ,i.base_geografica  	        AS [Base Geográfica]
+  ,CASE i.polaridade
+    WHEN 'Positiva' THEN 'Quanto maior, melhor'
+    WHEN 'Negativa' THEN 'Quanto menor, melhor'
+  END AS [Polaridade]
+  ,CASE i.base_geografica
+    WHEN 'Estadual' THEN 'Estado'
+    WHEN 'Municipal' THEN 'Município'
+    WHEN 'Regional' THEN 'Região'
+  END AS [Base Geográfica]
   ,i.forma_de_totalizacao_anual AS [Forma de Totalização Anual]
   ,i.forma_de_totalizacao_ppa   AS [Forma de Totalização PPA]
   ,i.periodicidade              AS [Periodicidade]
@@ -81,7 +88,7 @@ SELECT
   ,i.codigo_indicador || ' - ' || i.nome AS [Código e Nome Indicador]
   ,i.codigo_orgao               AS [Código Órgão Responsável Indicador]
   ,i.codigo_programa            AS [Código Programa]
-  ,o.nome                       AS [Órgão Responsável]
+  ,o.nome_simplificado          AS [Órgão Responsável]
   ,i.codigo_programa || ' - ' || pgm.nome AS [Nome Programa]
   ,CASE
     WHEN i.meta_anual_1 IS NOT NULL
@@ -104,6 +111,32 @@ LEFT JOIN programa pgm ON i.codigo_programa = pgm.codigo_programa
 
 -- Linha de Base Correta = IF(AND(NOT(ISBLANK(Indicador[Valor Linha de Base])), IF(Indicador[Polaridade] == "Quanto maior, melhor", ISBLANK(COUNTROWS(FILTER(RELATEDTABLE('Indicador Apuração'), 'Indicador Apuração'[Meta do Ano] >= Indicador[Valor Linha de Base]))), ISBLANK(COUNTROWS(FILTER(RELATEDTABLE('Indicador Apuração'), 'Indicador Apuração'[Meta do Ano] <= Indicador[Valor Linha de Base]))))), "Sim", "Não")
 -- Possui Metas Anuais = IF(AND(NOT(ISBLANK(Indicador[Meta ao Final do PPA])), ISBLANK(COUNTROWS(FILTER(RELATEDTABLE('Indicador Apuração'), ISBLANK('Indicador Apuração'[Meta do Ano]))))), "Sim", "Não")
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_produto AS
+SELECT
+  pdt.codigo_produto                   AS [Código Produto]
+  ,pdt.nome                            AS [Nome Produto]
+  ,pdt.codigo_produto || ' - ' || pdt.nome AS [Código e Nome Produto]
+  ,pdt.codigo_programa                 AS [Código Programa]
+  ,pdt.codigo_programa || ' - ' || pgm.nome || ' ' || pdt.nome [Programa e Produto para Busca Textual]
+  ,pdt.descricao                       AS [Descrição Produto]
+  ,pdt.prioritario                     AS [Produto Prioritário]
+  ,CASE 
+   WHEN pdt.prioritario = 1 THEN 'Sim'
+   WHEN pdt.prioritario = 0 THEN 'Não'
+  END [Meta Prioritária]
+  ,pdt.classificacao                   AS [Classificação Produto]
+FROM produto pdt
+JOIN programa pgm ON pdt.codigo_programa = pgm.codigo_programa
 
 -- METADATA ********************
 
