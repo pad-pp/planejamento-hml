@@ -1,0 +1,2649 @@
+{
+  "properties": {
+    "jobMode": "Batch",
+    "source": {
+      "type": "SqlServerTable",
+      "connectionSettings": {
+        "type": "SqlServer",
+        "externalReferences": {
+          "connection": "f75be1b9-1204-4d84-8b77-699ae8cf0523"
+        }
+      }
+    },
+    "destination": {
+      "type": "LakehouseTable",
+      "connectionSettings": {
+        "type": "Lakehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "ea2610f7-f9f2-937d-4123-4a004e2c9278",
+          "rootFolder": "Tables"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00",
+      "retry": 0
+    }
+  },
+  "activities": [
+    {
+      "id": "096c0ab0-51e0-458f-a76c-5f28c1b1d3e4",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "sysdiagrams"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "sysdiagrams"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "39e17cc3-df4e-419e-a213-9bff7f99f63a",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "ACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "ACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "efc49585-f3df-4f3f-a4fa-ee08e9d63811",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "BENEFICIARIO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "BENEFICIARIO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "8852c588-85d7-47f9-99c2-564a4842319c",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "CATEGORIA_ECONOMICA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "CATEGORIA_ECONOMICA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "884cd4bb-11de-4a14-9fd1-384afd1d06d7",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "DATA_DE_ATUALIZACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "DATA_DE_ATUALIZACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "d937aa93-ad2d-4b56-b027-599b8c6b65d4",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "ELEMENTO_DE_DESPESA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "ELEMENTO_DE_DESPESA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "c9e2013f-a007-4e04-818f-55b07f3aab2b",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "9c3bdfd0-e9eb-4495-a82d-62870e9c1133",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "META_ACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "META_ACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e01ab859-3b55-4199-b44b-9580d596ad5a",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "META_INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "META_INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "9f631351-d9ce-467d-bbb2-9b2e43f526b6",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "META_ODS"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "META_ODS"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "4bed7fd1-9c22-460c-b7a2-7c5ff1dffb3e",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "META_UO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "META_UO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "4f591376-1d99-4d8d-a5ea-fc8ba4df19b8",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "MONITORAMENTO_ACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "MONITORAMENTO_ACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "7aefe910-7e60-4015-8055-f5e897d5b8cf",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "MONITORAMENTO_INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "MONITORAMENTO_INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "0c4969ae-6b0f-43cf-863a-dbac207aa039",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "MONITORAMENTO_UO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "MONITORAMENTO_UO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "ff2557d2-5e4d-4135-a5e7-e490486f730b",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "MONITORAMENTO_VARIAVEL_INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "MONITORAMENTO_VARIAVEL_INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e5e6dad2-3beb-4f76-aa44-8e50dcd021d2",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "NATUREZA_DE_DESPESA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "NATUREZA_DE_DESPESA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "b17e23eb-80fe-4fb7-b88f-43e5dc9961f5",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "OBJETIVO_ESTRATEGICO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "OBJETIVO_ESTRATEGICO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "c5f00f78-0b90-4a49-8dd4-190834c74be6",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "ODS"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "ODS"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "3fd5576b-23c0-4e3f-9af2-0e8ccc9dc4e7",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "ORGAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "ORGAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "1e9c6ca9-72e7-4d6d-aee2-c72d1b2ebdd5",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "PERFIL"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "PERFIL"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "82907019-4422-4183-8f05-7cf9b3226eee",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "POLITICA_PUBLICA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "POLITICA_PUBLICA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "a42a74c7-61c4-4097-9ac0-1c4e3b5ecdaa",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "PRODUTO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "PRODUTO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "5100b811-9d05-46e5-b3b1-99efc90bf8fb",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "PROGRAMA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "PROGRAMA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "4ab5aabe-ef7b-4f1e-ad66-c1356861276a",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "SIGEO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "SIGEO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "2a29a0d7-edd9-41e5-8b52-4a9dad3bb4e8",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "SOE"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "SOE"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "0b33bc7c-9b99-44ee-a46a-0ac2d42bf7c1",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "UNIDADE_ORCAMENTARIA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "UNIDADE_ORCAMENTARIA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "3272abfa-7bce-460d-98a5-e35c91c8b499",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "USUARIO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "USUARIO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "1bd6971d-26d1-4c72-8e76-518f67b2c9ce",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VARIAVEL_INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VARIAVEL_INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "52db81fa-2114-491c-a9e4-3df5dd78baff",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_ACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_ACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "a1edffd6-4bb2-45bd-a45d-37a25bb42828",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_BENEFICIARIO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_BENEFICIARIO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "ed83e93b-b898-4d5d-900a-9b88e65a8b92",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_OBJETIVO_ESTRATEGICO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_OBJETIVO_ESTRATEGICO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "fc11aa66-4aac-4d03-bbe9-03665db3edbf",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_ODS"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_ODS"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "baf32239-cf95-43b1-a932-031b9aa99e1a",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_POLITICA_PUBLICA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_POLITICA_PUBLICA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "14085ddd-e710-4fb8-845a-021890da3e54",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_PRODUTO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_PRODUTO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "64bdaa88-faa8-40e8-9467-acb80e83c4c3",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_PROGRAMA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_PROGRAMA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "19e7f511-9c21-4223-894d-f830fe3c7cc0",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_USUARIO_PERFIL"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_ANO",
+            "table": "VINCULO_USUARIO_PERFIL"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "dec1b59f-8352-4489-abeb-95712dbf3794",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "ACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "ACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "7514c481-5a55-4814-91f7-73aa277814e2",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_ACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_ACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "8cd5dfd5-8c3d-4018-9af2-9550b1974004",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_ESP"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_ESP"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "6194d261-0a6b-4a44-b6e8-d9fb7525d41b",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "29f9ed5e-ee8a-4de3-aeb9-aae9f00fa8ef",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_ORGAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_ORGAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2d88002-9630-4859-bea3-ddf8f3b9a845",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_PRODUTO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_PRODUTO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "1519d1dd-836c-46ae-89c4-1b203452d42c",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_PROGRAMA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_PROGRAMA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "9b4912d8-587a-4f88-9773-48a58f608ba8",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_UO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_ANUAL_UO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "2eae0568-d3c7-4b00-84f1-077b48fc242b",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_ACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_ACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "363e3d6d-863b-43c4-bdb2-974a9205dd67",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_ESP"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_ESP"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "99c0f4b5-76f2-46ac-83c7-5dc9550622c7",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "6dbade6d-33c2-4004-9141-eb22ab58efbd",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_ORGAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_ORGAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "16f35a6d-fecb-4dad-a291-a1117c314fba",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_PRODUTO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_PRODUTO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "28fa68f6-8350-4927-b0f7-5fc55f796424",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_PROGRAMA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_PROGRAMA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "82ac793c-332c-4329-b3fa-c7278a44a943",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_UO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_UO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "1e43a670-4fbc-4ddb-ae61-eee39a67d6da",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_VARIAVEL_INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "APURACAO_MENSAL_VARIAVEL_INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "24c84bfd-7aa7-4ff9-8bae-c226dc7f0238",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "BENEFICIARIO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "BENEFICIARIO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "3fee8b32-ab1b-4bd7-90d8-9d27ad23671f",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "DATA_DE_ATUALIZACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "DATA_DE_ATUALIZACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "a4b3115b-266c-4c2b-a53a-572362e4c586",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "ed864c0b-2c30-4cb1-9a72-61c92cdd0320",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "META_ACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "META_ACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "d76f2491-fa7e-4eb9-a332-c15ba71eaeea",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "META_INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "META_INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "a894a666-bfaf-45d7-8720-284d3e17ac1c",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "META_ODS"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "META_ODS"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "76ac3bd0-879a-4343-8c17-3965a3340ed3",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "META_UO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "META_UO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "164781f1-8658-4bd5-8653-2c90cbdabebc",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "OBJETIVO_ESTRATEGICO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "OBJETIVO_ESTRATEGICO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "1434a346-c6da-4e84-b8d6-10cd176b0a38",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "ODS"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "ODS"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "c6316358-a851-454d-83ad-e8e1753dc2e8",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "ORGAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "ORGAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "79535cf4-3243-415b-9855-ed14381aebee",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "PERFIL"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "PERFIL"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "650933c2-b841-48c5-9d3a-03c9d6e1bc7f",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "POLITICA_PUBLICA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "POLITICA_PUBLICA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "a16acfb7-2e42-4b5f-98fc-6bfcfa103284",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "PRODUTO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "PRODUTO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "48f0374f-b4d6-4817-935e-ce048aa30fd1",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "PROGRAMA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "PROGRAMA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "4e9dfcc0-f554-4427-8c58-c0a3c62733fc",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "UNIDADE_ORCAMENTARIA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "UNIDADE_ORCAMENTARIA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "cb70053e-a3be-4094-bd43-3a54f416eeb1",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "USUARIO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "USUARIO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "8839048e-830c-462f-ae61-26210e44bf4b",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VARIAVEL_INDICADOR"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VARIAVEL_INDICADOR"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "64a964aa-39c4-48cf-8fd4-79c194d2fd61",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_ACAO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_ACAO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "dfe2d18f-5e1e-48fd-ad36-0ca789515aea",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_BENEFICIARIO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_BENEFICIARIO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "1cead238-4593-49d3-baf3-5f02c32cc370",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_OBJETIVO_ESTRATEGICO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_OBJETIVO_ESTRATEGICO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "d9c2bc96-1ad2-4566-bb70-8a7a4968e316",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_ODS"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_ODS"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "8b78f453-5c70-4ad3-a1bb-6970c1483dc3",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_POLITICA_PUBLICA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_POLITICA_PUBLICA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "212f654b-1f62-4f05-a2fc-42f6b91ca4d2",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_PRODUTO"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_PRODUTO"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "bc4b8e29-0801-467d-9e77-6b73f001d87f",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_PROGRAMA"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_PROGRAMA"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "2e5f9624-9ddf-41d6-af2d-26afb2b1c3e5",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_USUARIO_PERFIL"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "partitionOption": "None",
+          "writeBehavior": "Overwrite",
+          "datasetSettings": {
+            "schema": "EPA_POR_PPA",
+            "table": "VINCULO_USUARIO_PERFIL"
+          },
+          "applyVOrder": false,
+          "enableTimestampNtz": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    }
+  ]
+}
