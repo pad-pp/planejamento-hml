@@ -144,3 +144,67 @@ JOIN programa pgm ON pdt.codigo_programa = pgm.codigo_programa
 -- META   "language": "sql",
 -- META   "language_group": "sqldatawarehouse"
 -- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_acao AS
+SELECT
+  a.codigo_acao || '.' || va.codigo_orgao || '.' || va.codigo_programa || '.' || va.codigo_produto AS [Código Ação]
+  ,a.codigo_acao || ' - ' || a.nome AS [Código e Nome Ação]
+  ,va.codigo_orgao                  AS [Código Órgão]
+  ,va.codigo_programa               AS [Código Programa]
+  ,va.codigo_produto                AS [Código Produto]
+  ,a.nome                           AS [Denominação]
+  ,a.nome_sucinto                   AS [Denominação Sucinta]
+  ,a.descricao                      AS [Descrição]
+  ,a.finalidade                     AS [Finalidade]
+  ,a.forma_de_implementacao         AS [Formas de Implementação]
+  ,va.codigo_programa || ' - ' || pgm.nome || ' ' || va.codigo_produto || ' - ' || pdt.nome AS [Programa e Produto para Busca Textual]
+  ,a.tipo                           AS [Tipo de Ação]
+FROM acao a
+JOIN (SELECT distinct codigo_orgao, codigo_programa, codigo_produto, codigo_acao FROM vinculo_acao) va ON va.codigo_acao = a.codigo_acao
+LEFT JOIN programa pgm ON pgm.codigo_programa = va.codigo_programa
+LEFT JOIN produto pdt ON pdt.codigo_produto = va.codigo_produto
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_politica_publica AS
+SELECT
+  vpp.codigo_produto AS [Código Produto]
+  ,pp.nome AS [Política Pública]
+  ,pp.descricao AS [Política Pública Descrição]
+FROM politica_publica pp
+JOIN (SELECT DISTINCT codigo_produto, codigo_politica_publica FROM vinculo_politica_publica)
+ vpp ON vpp.codigo_politica_publica = pp.codigo_politica_publica
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_objetivo_estrategico AS
+SELECT
+  oe.codigo_oe            AS [Código]
+  ,oe.nome             AS [Nome]
+  ,oe.descricao        AS [Descrição]
+  ,voe.codigo_programa AS [Código Programa]
+FROM objetivo_estrategico oe
+JOIN vinculo_objetivo_estrategico voe ON oe.codigo_oe = voe.codigo_oe
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }

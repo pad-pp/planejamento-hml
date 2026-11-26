@@ -25,6 +25,17 @@
 
 # CELL ********************
 
+import functools
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 def filtro_padrao(df, ppa, ativo=True):
     if 'PPA' in df.columns:
         df = df.filter(df.PPA == ppa).drop('PPA')
@@ -45,73 +56,21 @@ def etl_padrao(df):
 
 # CELL ********************
 
-def etl_orgao(input_datalake, output_datalake, ppa):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.orgao')
-    df = filtro_padrao(df, ppa)
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.orgao', mode='overwrite')
-
-
-def etl_programa(input_datalake, output_datalake, ppa):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.programa')
-    df = filtro_padrao(df, ppa)
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.programa', mode='overwrite')    
-
-
-def etl_acao(input_datalake, output_datalake, ppa):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.acao')
-    df = filtro_padrao(df, ppa)
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.acao', mode='overwrite') 
-
-
-def etl_produto(input_datalake, output_datalake, ppa):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.produto')
-    df = filtro_padrao(df, ppa)
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.produto', mode='overwrite')  
-
-
-def etl_indicador(input_datalake, output_datalake, ppa):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.indicador')
-    df = filtro_padrao(df, ppa)
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.indicador', mode='overwrite')
-
-
-def etl_politica_publica(input_datalake, output_datalake, ppa):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.politica_publica')
-    df = filtro_padrao(df, ppa)
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.politica_publica', mode='overwrite')
-
-
-def etl_objetivo_estrategico(input_datalake, output_datalake, ppa):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.objetivo_estrategico')
-    df = filtro_padrao(df, ppa)
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.objetivo_estrategico', mode='overwrite')
-
-
-def etl_beneficiario(input_datalake, output_datalake, ppa):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.beneficiario')
-    df = filtro_padrao(df, ppa)
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.beneficiario', mode='overwrite')
-
-
-def etl_ods(input_datalake, output_datalake, ppa):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.ods')
-    df = filtro_padrao(df, ppa)
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.ods', mode='overwrite')
-
-
-def etl_data_de_atualizacao(input_datalake, output_datalake):
-    df = spark.read.table(f'{input_datalake}.epa_por_ppa.data_de_atualizacao')
-    df = etl_padrao(df)
-    df.write.option("overwriteSchema", "true").saveAsTable(f'{output_datalake}.dbo.data_de_atualizacao', mode='overwrite')
+def extract_and_load(input_datalake, output_datalake, ppa, schema, input_table_name, output_table_name=None):
+    target_table_name = input_table_name if output_table_name is None else output_table_name
+    def inner(function):
+        @functools.wraps(function)
+        def wrapper(*args, **kwargs):
+            print(f'Executando {input_datalake}.{schema}.{input_table_name}')
+            df = spark.read.table(f'{input_datalake}.{schema}.{input_table_name}')
+            df = filtro_padrao(df, ppa)
+            df = etl_padrao(df)
+            df = function(df)
+            output_schema = 'dbo'
+            df.write.option('overwriteSchema', 'true').saveAsTable(f'{output_datalake}.{output_schema}.{target_table_name}', mode='overwrite')
+            print(f'Gravado em {output_datalake}.{output_schema}.{target_table_name}')
+        return wrapper
+    return inner
 
 # METADATA ********************
 
@@ -122,19 +81,89 @@ def etl_data_de_atualizacao(input_datalake, output_datalake):
 
 # CELL ********************
 
-def main(input_datalake, output_datalake, ppa):
-    etl_orgao(input_datalake, output_datalake, ppa)
-    etl_programa(input_datalake, output_datalake, ppa)
-    etl_acao(input_datalake, output_datalake, ppa)
-    etl_produto(input_datalake, output_datalake, ppa)
-    etl_indicador(input_datalake, output_datalake, ppa)
+el = functools.partial(
+    extract_and_load,
+    input_datalake='DB_PAD_PP_',
+    output_datalake='PAD_PP_MODELO_SEMANTICO',
+    ppa='2024-2027')
 
-    etl_politica_publica(input_datalake, output_datalake, ppa)
-    etl_objetivo_estrategico(input_datalake, output_datalake, ppa)
-    etl_beneficiario(input_datalake, output_datalake, ppa)
-    etl_ods(input_datalake, output_datalake, ppa)
+@el(schema='epa_por_ppa', input_table_name='orgao')
+def etl_orgao(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='programa')
+def etl_programa(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='produto')
+def etl_produto(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='acao')
+def etl_acao(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='vinculo_acao')
+def etl_vinculo_acao(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='indicador')
+def etl_indicador(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='politica_publica')
+def etl_politica_publica(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='vinculo_politica_publica')
+def etl_vinculo_politica_publica(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='objetivo_estrategico')
+def etl_objetivo_estrategico(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='vinculo_objetivo_estrategico')
+def etl_vinculo_objetivo_estrategico(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='beneficiario')
+def etl_beneficiario(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='ods')
+def etl_ods(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='data_de_atualizacao')
+def etl_data_de_atualizacao(df):
+    return df
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+def main():
+    etl_orgao()                        # OK
+    etl_programa()                     # OK
+    etl_acao()                         # OK
+    etl_vinculo_acao()                 # OK
+    etl_produto()                      # OK
+    etl_indicador()                    # OK
+
+    etl_politica_publica()             # OK
+    etl_vinculo_politica_publica()     # OK
+    etl_objetivo_estrategico()         # OK
+    etl_vinculo_objetivo_estrategico() # OK
+    etl_beneficiario()
+    etl_ods()
     
-    etl_data_de_atualizacao(input_datalake, output_datalake)
+    etl_data_de_atualizacao() # OK
 
 # METADATA ********************
 
@@ -145,20 +174,7 @@ def main(input_datalake, output_datalake, ppa):
 
 # CELL ********************
 
-input_datalake = 'db_pad_pp_'
-output_datalake = 'pad_pp_modelo_semantico'
-ppa = '2024-2027'
-main(input_datalake, output_datalake, ppa)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
+main()
 
 # METADATA ********************
 
