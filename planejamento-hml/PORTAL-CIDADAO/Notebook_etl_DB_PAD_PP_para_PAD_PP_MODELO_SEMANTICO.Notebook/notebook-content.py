@@ -19,6 +19,15 @@
 # META           "id": "b6e3c753-8b05-430a-aedf-65bf1d2579e6"
 # META         }
 # META       ]
+# META     },
+# META     "warehouse": {
+# META       "default_warehouse": "1453f73e-441a-bc82-48d6-542933df602c",
+# META       "known_warehouses": [
+# META         {
+# META           "id": "1453f73e-441a-bc82-48d6-542933df602c",
+# META           "type": "Datawarehouse"
+# META         }
+# META       ]
 # META     }
 # META   }
 # META }
@@ -131,12 +140,24 @@ def etl_vinculo_objetivo_estrategico(df):
 def etl_beneficiario(df):
     return df
 
-@el(schema='epa_por_ppa', input_table_name='ods')
-def etl_ods(df):
-    return df
-
 @el(schema='epa_por_ppa', input_table_name='data_de_atualizacao')
 def etl_data_de_atualizacao(df):
+    return df
+
+@el(schema='epa_por_ano', input_table_name='categoria_economica')
+def etl_categoria_economica(df):
+    return df
+
+@el(schema='epa_por_ano', input_table_name='elemento_de_despesa')
+def etl_elemento_de_despesa(df):
+    return df
+
+@el(schema='epa_por_ano', input_table_name='natureza_de_despesa', output_table_name='grupo_de_despesa')
+def etl_grupo_de_despesa(df):
+    return df
+
+@el(input_datalake='tabelas_externas', schema='dbo', input_table_name='ods')
+def etl_ods(df):
     return df
 
 # METADATA ********************
@@ -149,21 +170,26 @@ def etl_data_de_atualizacao(df):
 # CELL ********************
 
 def main():
-    etl_orgao()                        # OK
-    etl_programa()                     # OK
-    etl_acao()                         # OK
-    etl_vinculo_acao()                 # OK
-    etl_produto()                      # OK
-    etl_indicador()                    # OK
+    # etl_orgao()                        # OK
+    # etl_programa()                     # OK
+    # etl_acao()                         # OK
+    # etl_vinculo_acao()                 # OK
+    # etl_produto()                      # OK
+    # etl_indicador()                    # OK
 
-    etl_politica_publica()             # OK
-    etl_vinculo_politica_publica()     # OK
-    etl_objetivo_estrategico()         # OK
-    etl_vinculo_objetivo_estrategico() # OK
-    etl_beneficiario()
-    etl_ods()
+    # etl_politica_publica()             # OK
+    # etl_vinculo_politica_publica()     # OK
+    # etl_objetivo_estrategico()         # OK
+    # etl_vinculo_objetivo_estrategico() # OK
+
+    # etl_beneficiario()                 #
+    etl_ods()                          #
     
-    etl_data_de_atualizacao() # OK
+    # etl_categoria_economica()          # 
+    # etl_elemento_de_despesa()          # 
+    # etl_grupo_de_despesa()             # 
+
+    # etl_data_de_atualizacao()          # OK
 
 # METADATA ********************
 
