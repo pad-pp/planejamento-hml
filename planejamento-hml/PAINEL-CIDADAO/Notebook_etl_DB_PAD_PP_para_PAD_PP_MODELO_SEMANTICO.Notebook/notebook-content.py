@@ -45,7 +45,7 @@ import functools
 
 # CELL ********************
 
-def filtro_padrao(df, ppa, ativo=True):
+def filtro_padrao(df, ppa, ativo):
     if 'PPA' in df.columns:
         df = df.filter(df.PPA == ppa).drop('PPA')
     if ativo and 'ATIVO' in df.columns:
@@ -65,14 +65,14 @@ def etl_padrao(df):
 
 # CELL ********************
 
-def extract_and_load(input_datalake, output_datalake, ppa, schema, input_table_name, output_table_name=None):
+def extract_and_load(input_datalake, output_datalake, ppa, ativo, schema, input_table_name, output_table_name=None):
     target_table_name = input_table_name if output_table_name is None else output_table_name
     def inner(function):
         @functools.wraps(function)
         def wrapper(*args, **kwargs):
             print(f'Executando {input_datalake}.{schema}.{input_table_name}')
             df = spark.read.table(f'{input_datalake}.{schema}.{input_table_name}')
-            df = filtro_padrao(df, ppa)
+            df = filtro_padrao(df, ppa, ativo)
             df = etl_padrao(df)
             df = function(df)
             output_schema = 'dbo'
@@ -94,7 +94,8 @@ el = functools.partial(
     extract_and_load,
     input_datalake='DB_PAD_PP_',
     output_datalake='PAD_PP_MODELO_SEMANTICO',
-    ppa='2024-2027')
+    ppa='2024-2027',
+    ativo=True)
 
 @el(schema='epa_por_ppa', input_table_name='orgao')
 def etl_orgao(df):
@@ -102,6 +103,10 @@ def etl_orgao(df):
 
 @el(schema='epa_por_ppa', input_table_name='programa')
 def etl_programa(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='vinculo_programa')
+def etl_vinculo_programa(df):
     return df
 
 @el(schema='epa_por_ppa', input_table_name='produto')
@@ -140,6 +145,10 @@ def etl_vinculo_objetivo_estrategico(df):
 def etl_beneficiario(df):
     return df
 
+@el(schema='epa_por_ppa', input_table_name='vinculo_beneficiario')
+def etl_vinculo_beneficiario(df):
+    return df
+
 @el(schema='epa_por_ppa', input_table_name='data_de_atualizacao')
 def etl_data_de_atualizacao(df):
     return df
@@ -160,6 +169,22 @@ def etl_grupo_de_despesa(df):
 def etl_ods(df):
     return df
 
+@el(schema='epa_por_ppa', input_table_name='ods', output_table_name='ods_pad_pp')
+def etl_ods_pad_pp(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='meta_ods')
+def etl_meta_ods(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='vinculo_ods')
+def etl_vinculo_ods(df):
+    return df
+
+@el(schema='epa_por_ppa', input_table_name='unidade_orcamentaria', ativo=False)
+def etl_unidade_orcamentaria(df):
+    return df
+
 # METADATA ********************
 
 # META {
@@ -171,23 +196,30 @@ def etl_ods(df):
 
 def main():
     # etl_orgao()                        # OK
+    # etl_unidade_orcamentaria()         # OK
     # etl_programa()                     # OK
+    etl_vinculo_programa()               # OK
     # etl_acao()                         # OK
     # etl_vinculo_acao()                 # OK
     # etl_produto()                      # OK
     # etl_indicador()                    # OK
+
 
     # etl_politica_publica()             # OK
     # etl_vinculo_politica_publica()     # OK
     # etl_objetivo_estrategico()         # OK
     # etl_vinculo_objetivo_estrategico() # OK
 
-    # etl_beneficiario()                 #
-    etl_ods()                          #
-    
-    # etl_categoria_economica()          # 
-    # etl_elemento_de_despesa()          # 
-    # etl_grupo_de_despesa()             # 
+    # etl_beneficiario()                 # OK
+    # etl_vinculo_beneficiario()         # OK
+    # etl_ods()                          # OK
+    # etl_vinculo_ods()                  # OK
+    # etl_meta_ods()                     # OK   
+    # etl_ods_pad_pp()                   # OK
+
+    # etl_categoria_economica()          # OK
+    # etl_elemento_de_despesa()          # OK
+    # etl_grupo_de_despesa()             # OK
 
     # etl_data_de_atualizacao()          # OK
 

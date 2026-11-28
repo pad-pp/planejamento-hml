@@ -7,6 +7,11 @@
 -- META     "name": "sqldatawarehouse"
 -- META   },
 -- META   "dependencies": {
+-- META     "lakehouse": {
+-- META       "default_lakehouse_name": "",
+-- META       "default_lakehouse_workspace_id": "",
+-- META       "known_lakehouses": []
+-- META     },
 -- META     "warehouse": {
 -- META       "default_warehouse": "22fe4cd2-2e0d-408f-b4cd-308e2078fccb",
 -- META       "known_warehouses": [
@@ -17,6 +22,10 @@
 -- META         {
 -- META           "id": "1453f73e-441a-bc82-48d6-542933df602c",
 -- META           "type": "Datawarehouse"
+-- META         },
+-- META         {
+-- META           "id": "92c74e4a-63b9-452b-a1ab-1c46a614fbaa",
+-- META           "type": "Lakewarehouse"
 -- META         }
 -- META       ]
 -- META     }
@@ -64,6 +73,23 @@ SELECT
 FROM programa p
 JOIN orgao o ON p.codigo_orgao_responsavel = o.codigo_orgao;
 GO;
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_orgao_executor_programa AS
+SELECT
+  vp.codigo_programa   AS [Código Programa]
+  ,vp.codigo_orgao     AS [Código Órgão]
+  ,o.nome_simplificado AS [Órgão Executor]
+FROM vinculo_programa vp
+JOIN orgao o ON o.codigo_orgao = vp.codigo_orgao
 
 -- METADATA ********************
 
@@ -308,6 +334,191 @@ GO;
 
 -- CELL ********************
 
+CREATE OR ALTER VIEW dbo.v_beneficiario AS
+SELECT DISTINCT
+  vb.codigo_produto AS [Código Produto]
+  ,b.nome           AS [Beneficiário]
+FROM beneficiario b
+JOIN vinculo_beneficiario vb ON b.codigo_beneficiario = vb.codigo_beneficiario;
+GO;
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_produto_ods AS
+SELECT
+  vo.codigo_produto 					     AS [Código Produto]
+  ,o.codigo_ods       						 AS [Código ODS]
+  ,o.nome                                    AS [Nome ODS]
+  ,mo.codigo_meta_ods 						 AS [Código Meta]
+  ,mo.nome                                   AS [Nome Meta]
+  ,CAST(o.codigo_ods AS VARCHAR(2)) || '.' || CAST(mo.codigo_meta_ods AS VARCHAR(2)) AS [Código Completo Meta]
+FROM ods_pad_pp o
+JOIN meta_ods mo ON o.codigo_ods = mo.codigo_ods
+JOIN (
+   SELECT DISTINCT
+     codigo_produto
+     ,codigo_ods
+    FROM vinculo_ods
+    ) vo ON vo.codigo_ods = o.codigo_ods;
+GO;
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_unidade_orcamentaria AS
+SELECT
+  uo.codigo_orgao || ' - ' || o.nome_simplificado AS [Órgão]
+  ,uo.codigo_uo 		               AS [Código UO]
+  ,uo.nome                           AS [Nome UO]
+  ,uo.tipo_de_administracao          AS [Tipo Administração]
+  ,o.poder AS [Poder]
+  ,CASE ativo
+     WHEN 1 THEN 'ATIVO'
+     WHEN 0 THEN 'INATIVO'
+  END AS [Status]
+  ,uo.codigo_uo || ' - ' || uo.nome AS [UO Descritiva]
+FROM unidade_orcamentaria uo
+JOIN orgao o ON o.codigo_orgao = uo.codigo_orgao 
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_regiao_administrativa AS
+SELECT
+  codigo                  AS [Código]
+  ,municipio              AS [Município]
+  ,regiao_administrativa  AS [Região Administrativa]
+  ,regiao_de_governo      AS [Região de Governo]
+  ,regiao_metropolitana   AS [Região Metropolitana]
+  ,'São Paulo'            AS [Estado]
+  ,UPPER(municipio)       AS [Nome Município Uppercase]
+FROM raw_tabelas_externas.dbo.seade_regionalizacoes_sp;
+GO;
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_unidade_administrativa AS
+SELECT
+    orgao AS [Órgão],
+    CASE 
+        WHEN CHARINDEX('-', unidade_orcamentaria) > 0 
+        THEN TRIM(LEFT(unidade_orcamentaria, CHARINDEX('-', unidade_orcamentaria) - 1))
+        ELSE TRIM(unidade_orcamentaria)
+    END AS [Código UO],
+    CASE 
+        WHEN CHARINDEX('-', unidade_orcamentaria) > 0 
+        THEN TRIM(SUBSTRING(unidade_orcamentaria, CHARINDEX('-', unidade_orcamentaria) + 1, LEN(unidade_orcamentaria)))
+        ELSE NULL
+    END AS [Nome UO],
+    unidade_gestora        AS [Unidade Gestora],
+    unidade_administrativa AS [Unidade Administrativa],
+    nivel                  AS [Nível],
+    tipo_administracao     AS [Tipo Administração],
+    poder                  AS [Poder],
+    CASE 
+        WHEN CHARINDEX('-', municipio) > 0 
+        THEN TRIM(LEFT(municipio, CHARINDEX('-', municipio) - 1))
+        ELSE TRIM(municipio)
+    END AS [Código Município],
+    CASE 
+        WHEN CHARINDEX('-', municipio) > 0 
+        THEN TRIM(SUBSTRING(municipio, CHARINDEX('-', municipio) + 1, LEN(municipio)))
+        ELSE NULL
+    END AS [Nome Município],
+    status                 AS [Status]
+FROM raw_tabelas_externas.dbo.dados_ua;
+GO;
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_paineis_impacto AS
+SELECT
+  codigo_oe        AS [Código OE]
+  ,imagem          AS [Imagem]
+  ,powerbi_impacto AS [PowerBI Impacto]
+  ,nome            AS [Nome]
+  ,anexo_metodologico AS [Anexo Metodológico]
+FROM raw_tabelas_externas.dbo.paineis_impacto;
+GO;
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
+-- CELL ********************
+
+CREATE OR ALTER VIEW dbo.v_indicador_apuracao AS
+SELECT
+  ami.codigo_indicador             AS [Código Indicador]
+  ,aai.meta                        AS [Meta do Ano]
+  ,ami.valor_apurado               AS [Valor Apurado no Mês]
+  ,ami.comentario_de_execucao      AS [Comentário da Execução]
+  ,ami.analise_de_monitoramento    AS [Análise de Monitoramento]
+  ,ami.data_de_referencia          AS [Mês Apuração]
+  ,ami.valor_apurado_acumulado     AS [Valor Apurado Acumulado no Ano]
+  ,ami.valor_apurado_acumulado_ppa AS [Valor Apurado Acumulado no PPA]
+  ,ami.codigo_produto AS [Código Produto]
+  , AS [Meta Esperada no Ano]
+  , AS [Meta Esperada no PPA]
+  , AS [Percentual de Cumprimento Esperado da Meta do Ano]
+  , AS [Percentual de Cumprimento Esperado da Meta do PPA]
+  , AS [Percentual de Cumprimento da Meta do Ano]
+  , AS [Percentual de Cumprimento da Meta do PPA]
+  , AS [Houve Apuração no Mês?]
+  , AS [Indicador Descontinuado?]
+  , AS [Liquidado no Ano / Dotação Atualizada (em %)]
+
+ -- [Última Apuração Esperada]
+ -- [É Último Mês de Apuração?]
+ -- [É Última Apuração do Ano?]
+ -- [Ano Apuração]
+ -- [% Ajustado Cumprimento da Meta do Ano]
+ -- [Apuração Não Realizada Indevidamente]
+ -- [Apuração Física / Execução Orçamentária]
+ -- [ID Apuração]
+ -- [Índice de Defasagem de Apuração Física]
+ -- [Resultado do Ano Satisfatório?]
+FROM apuracao_mensal_indicador ami
+JOIN apuracao_anual_indicador aai ON
+      ami.codigo_indicador = aai.codigo_indicador
+  AND ami.ano = aai.ano;
+GO;
 
 -- METADATA ********************
 
