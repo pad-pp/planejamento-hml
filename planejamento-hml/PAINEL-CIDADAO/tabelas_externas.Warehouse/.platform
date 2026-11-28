@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "tabelas_externas",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1453f73e-441a-bc82-48d6-542933df602c"
+  }
+}
